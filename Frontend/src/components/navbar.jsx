@@ -1,17 +1,63 @@
 // Navbar.jsx
 import { useState } from 'react';
+import axios from 'axios';
+
+const api = axios.create({
+  baseURL: 'http://localhost:5000',
+  headers: {
+    'Content-Type': 'application/json',
+    // Add token to default headers
+    get token() {
+      return localStorage.getItem('token');
+    }
+  }
+});
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [classroomId, setClassroomId] = useState('');
+  const [classroomName, setClassroomName] = useState('');
+  const [action, setAction] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
 
-  const handleJoinClass = (e) => {
+  const handleClassAction = async (e) => {
     e.preventDefault();
-    // Handle joining class logic here
-    console.log('Joining classroom:', classroomId);
-    setClassroomId('');
-    setShowModal(false);
+    setError('');
+    setIsLoading(true);
+
+    try {
+      // Get token from localStorage
+      const token = localStorage.getItem('token');
+      
+      if (!token) {
+        throw new Error('Please login first');
+      }
+
+      if (action === 'create') {
+        const response = await api.post('/classroom/create', {
+          name: classroomName
+        }, {
+          headers: { token } // Add token to request headers
+        });
+        console.log('Classroom created:', response.data);
+      } else {
+        const response = await api.post(`/classroom/join/${classroomId}`, {}, {
+          headers: { token } // Add token to request headers
+        });
+        console.log('Joined classroom:', response.data);
+      }
+      
+      setShowModal(false);
+      setClassroomId('');
+      setClassroomName('');
+      setAction('');
+    } catch (error) {
+      setError(error.response?.data?.message || error.message || 'An error occurred');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -26,8 +72,13 @@ const Navbar = () => {
             </p>
           </div>
 
-          {/* Buttons */}
+          {/* Navigation Buttons */}
           <div className="flex items-center space-x-4">
+            <button 
+              onClick={() => setShowModal(true)}
+              className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white hover:opacity-90 hover:scale-105 hover:shadow-md px-4 py-2 rounded-lg font-medium transition-all duration-200">
+              Classroom
+            </button>
             <button className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white hover:opacity-90 hover:scale-105 hover:shadow-md px-4 py-2 rounded-lg font-medium transition-all duration-200 flex items-center">
               <svg 
                 className="w-5 h-5 mr-2 text-white" 
@@ -39,12 +90,6 @@ const Navbar = () => {
               </svg>
               Chat with Bot
             </button>
-            <button 
-              onClick={() => setShowModal(true)}
-              className="border-2 border-indigo-600 text-indigo-600 hover:bg-indigo-50 hover:scale-105 hover:shadow-md px-4 py-2 rounded-lg font-medium transition-all duration-200"
-            >
-              Join
-            </button>
           </div>
         </div>
       </div>
@@ -54,32 +99,81 @@ const Navbar = () => {
         <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50">
           <div className="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
             <div className="mt-3">
-              <h3 className="text-lg font-medium text-gray-900 mb-4">Join Classroom</h3>
-              <form onSubmit={handleJoinClass}>
-                <input
-                  type="text"
-                  value={classroomId}
-                  onChange={(e) => setClassroomId(e.target.value)}
-                  placeholder="Enter Classroom ID"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                  required
-                />
-                <div className="mt-4 flex justify-end space-x-3">
-                  <button
-                    type="button"
-                    onClick={() => setShowModal(false)}
-                    className="px-4 py-2 text-gray-500 hover:text-gray-700"
-                  >
-                    Cancel
-                  </button>
-                  <button
-                    type="submit"
-                    className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-4 py-2 rounded-lg hover:opacity-90"
-                  >
-                    Join Class
-                  </button>
-                </div>
-              </form>
+              <h3 className="text-lg font-medium text-gray-900 mb-4">
+                Classroom Actions
+              </h3>
+              <div className="flex gap-4 mb-4">
+                <button
+                  onClick={() => setAction('create')}
+                  className={`flex-1 py-2 rounded-lg font-medium transition-all duration-200 
+                    ${action === 'create' 
+                      ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white' 
+                      : 'bg-gray-100 text-gray-700'}`}
+                >
+                  Create Class
+                </button>
+                <button
+                  onClick={() => setAction('join')}
+                  className={`flex-1 py-2 rounded-lg font-medium transition-all duration-200
+                    ${action === 'join' 
+                      ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white' 
+                      : 'bg-gray-100 text-gray-700'}`}
+                >
+                  Join Class
+                </button>
+              </div>
+              
+              {action && (
+                <form onSubmit={handleClassAction}>
+                  {action === 'create' ? (
+                    <input
+                      type="text"
+                      value={classroomName}
+                      onChange={(e) => setClassroomName(e.target.value)}
+                      placeholder="Enter Classroom Name"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                      required
+                    />
+                  ) : (
+                    <input
+                      type="text"
+                      value={classroomId}
+                      onChange={(e) => setClassroomId(e.target.value)}
+                      placeholder="Enter Classroom ID"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                      required
+                    />
+                  )}
+                  <div className="mt-4 flex justify-end space-x-3">
+                    {error && (
+                      <p className="text-red-500 text-sm">{error}</p>
+                    )}
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setShowModal(false);
+                        setAction('');
+                        setError('');
+                      }}
+                      className="px-4 py-2 text-gray-500 hover:text-gray-700"
+                    >
+                      Cancel
+                    </button>
+                    <button
+                      type="submit"
+                      disabled={isLoading}
+                      className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-4 py-2 rounded-lg hover:opacity-90 disabled:opacity-50"
+                    >
+                      {isLoading 
+                        ? 'Processing...' 
+                        : action === 'create' 
+                          ? 'Create' 
+                          : 'Join'
+                      }
+                    </button>
+                  </div>
+                </form>
+              )}
             </div>
           </div>
         </div>

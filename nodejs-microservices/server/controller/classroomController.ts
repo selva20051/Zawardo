@@ -10,9 +10,6 @@ export const createClassroom = async (req: Request, res: Response) => {
 
     try {
      
-        if (req.user.role !== 'ADMIN') {
-            return res.status(401).json({ message: 'You are not authorized to create a classroom' });
-        }
 
         
         const classroom = await prisma.classroom.create({

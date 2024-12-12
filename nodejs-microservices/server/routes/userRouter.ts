@@ -1,56 +1,51 @@
 import express from 'express';
-import { Auth, getUsers, googleStrategy } from '../controller/userController.js';
-import { generateAccessToken } from '../utils/generateTokens.js';
 import passport from 'passport';
+import { Auth, googleStrategy, getUserData } from '../controller/userController.js';
+import { authChecker } from '../middleware/authChecker.js';
+import { Request, Response } from 'express';
+import { generateAccessToken } from '../utils/generateTokens.js';
 
 const router = express.Router();
 
-// Initialize Google strategy
+router.post('/auth', Auth);
+router.get('/user-data', );
+
 googleStrategy();
 
-// Route to get all users
-router.get('/', getUsers);
-
-// Route for user authentication
-router.post('/auth', Auth);
-
-// Google OAuth route
-router.get('/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
+// Route to initiate Google OAuth
+router.get('/auth/google', passport.authenticate('google', {
+  scope: ['profile', 'email']
+}));
 
 // Google OAuth callback route
-router.get(
-    '/google/callback',
-    passport.authenticate('google', { failureRedirect: '/login' }),
-    (req, res) => {
-        if (!req.user) {
-            // Redirect to login if authentication fails
-            return res.redirect('/login');
-        }
-
-        const user = req.user;
-        const token = generateAccessToken(user.id, res); // Generate an access token for the user
-
-        // Send token to the frontend securely via postMessage
-        res.send(`
-            <html>
-                <body>
-                    <script>
-                        if (window.opener) {
-                            // Send the token to the frontend using postMessage
-                            window.opener.postMessage(
-                                { token: '${token}' },
-                                '${process.env.FRONTEND_URL}'
-                            );
-                            window.close();
-                        } else {
-                            // Fallback to redirecting to the frontend root if window.opener is unavailable
-                            window.location.href = '${process.env.FRONTEND_URL}';
-                        }
-                    </script>
-                </body>
-            </html>
-        `);
+router.get('/auth/google/callback', 
+  passport.authenticate('google', { 
+    failureRedirect: `${process.env.FRONTEND_URL}/login`,
+    session: false 
+  }),
+  (req: Request, res: Response) => {
+    if (!req.user) {
+      return res.redirect(`${process.env.FRONTEND_URL}/login`);
     }
+    
+    const token = generateAccessToken((req.user as any).id, res);
+    
+    // Send HTML that closes itself and communicates with opener
+    res.send(`
+      <html>
+        <body>
+          <script>
+            if (window.opener) {
+              window.opener.postMessage({ token: '${token}' }, '${process.env.FRONTEND_URL}');
+              window.close();
+            }
+          </script>
+        </body>
+      </html>
+    `);
+  }
 );
+
+router.get('/user-data', authChecker, getUserData);
 
 export default router;

@@ -1,7 +1,7 @@
 import React from "react";
 import AnimatedGridPattern from '../components/ui/animated-grid-pattern'
 import Navbar from '../components/navbar'
-import ClassCard from "@/components/classCard";
+import Classe from "@/components/classe";
 
 function Home() {
     return (
@@ -42,21 +42,8 @@ function Home() {
             {/* Classes Grid */}
             <section className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <ClassCard 
-                        title="Computer Science 101"
-                        description="Introduction to Programming"
-                        students={24}
-                    />
-                    <ClassCard 
-                        title="Mathematics 201"
-                        description="Calculus II"
-                        students={18}
-                    />
-                    <ClassCard 
-                        title="Physics 301"
-                        description="Quantum Mechanics"
-                        students={15}
-                    />
+                    <Classe />
+                   
                 </div>
             </section>
         </div>

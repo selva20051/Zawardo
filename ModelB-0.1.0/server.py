@@ -1,59 +1,215 @@
-from flask import Flask, request, jsonify
-from googleapiclient.discovery import build
-from transformers import AutoTokenizer, AutoModel
-import torch
-from sklearn.metrics.pairwise import cosine_similarity
-import pandas as pd
-from collections import defaultdict
-import json
-from googletrans import Translator
-from datetime import datetime
 import random
+import torch
+import requests
+from transformers import T5Tokenizer, T5ForConditionalGeneration
+import logging
 import re
-from difflib import get_close_matches
+from collections import defaultdict
+import pandas as pd
+from googleapiclient.discovery import build
+from googletrans import Translator
+from sklearn.metrics.pairwise import cosine_similarity
+from flask import Flask, request, jsonify
+from transformers import AutoTokenizer, AutoModel
 
+# Flask app setup
 app = Flask(__name__)
 
 # YouTube API configuration
 API_KEY = 'AIzaSyBUifBNejneMKD3DlpqNl4E--HDITZUQRQ'
 
-# Load BERT model and tokenizer
+# Load BERT model and tokenizer for student evaluation
 tokenizer = AutoTokenizer.from_pretrained('bert-base-uncased')
 model = AutoModel.from_pretrained('bert-base-uncased')
 
-# Load dataset
+# Initialize the chatbot model (T5 and Ollama)
+MODEL_DIR = r"C:\Users\SRIMANTA MAHARANA\Desktop\vinayak\Zawardo\checkpoint-12000"
+OLLAMA_API_URL = "http://localhost:11434/api/generate"
+
+# Model weights and patterns - Adjusted to favor Ollama
+T5_KEYWORDS = {
+    'explain': 0.6,
+    'what is': 0.6,
+    'how to': 0.6,
+    'define': 0.6,
+    'calculate': 0.5,
+    'analyze': 0.5
+}
+
+OLLAMA_PATTERNS = {
+    r'\?$': 0.7,  # Increased from 0.6
+    r'^(hi|hello|hey)': 0.9,
+    r'(can you|could you)': 0.8,
+    r'opinion|think|feel': 0.9,
+    r'chat|talk': 0.95,
+    r'^[^.!?]*$': 0.6,  # Simple statements
+    r'(thanks|thank you)': 0.9,
+    r'(yes|no|maybe)': 0.8,
+    r'tell me': 0.8
+}
+
+tokenizer_chat = T5Tokenizer.from_pretrained(MODEL_DIR)
+model_chat = T5ForConditionalGeneration.from_pretrained(MODEL_DIR)
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+model_chat.to(device)
+
+# BERT Dataset and Evaluation
 data = [
-    {
-        "question": "Who developed Python programming language?",
-        "correct_answer": "Guido van Rossum",
-        "explanation": "Python was created by Guidol van Rossum in the late 1980s and first released in 1991.",
-        "topic": "History of Python"
+   {
+      "question": "Who developed Python programming language?",
+      "correct_answer": "Guido van Rossum",
+      "explanation": "Python was created by Guido van Rossum in the late 1980s and first released in 1991.",
+      "topic": "History of Python"
     },
-    # ... continuing withe all 24 questions from test.py covering topics like:
-    # - Python History
-    # - Variables
-    # - If-Else
-    # - Loops
-    # - Classes and Objects
-    # - Operators
-    # - Lists
-    #a - Tuples
-    # - Dictionaries
-    # - Functions
-    # - Exceptions
-    # - File Handling
+    {
+      "question": "In which year was Python released?",
+      "correct_answer": "1991",
+      "explanation": "Python's first public release was in February 1991.",
+      "topic": "History of Python"
+    },
+    {
+      "question": "Which of the following is a valid variable name in Python?",
+      "correct_answer": "var_name",
+      "explanation": "Variable names in Python can include letters, digits, and underscores but cannot start with a digit.",
+      "topic": "Variables"
+    },
+    {
+      "question": "What will be the output of x = 10; y = 20; print(x + y)?",
+      "correct_answer": "30",
+      "explanation": "The values of x and y are added together, resulting in 30.",
+      "topic": "Variables"
+    },
+    {
+      "question": "What will be the output of the code: if 5 > 3: print('Yes') else: print('No')?",
+      "correct_answer": "Yes",
+      "explanation": "Since 5 is greater than 3, the condition is True, and 'Yes' is printed.",
+      "topic": "If-Else"
+    },
+    {
+      "question": "Which keyword is used for conditional statements in Python?",
+      "correct_answer": "if",
+      "explanation": "The 'if' keyword is used to test a condition in Python.",
+      "topic": "If-Else"
+    },
+    {
+      "question": "What will be the output of the following code: for i in range(3): print(i)?",
+      "correct_answer": "0 1 2",
+      "explanation": "The range(3) generates numbers 0, 1, and 2, which are printed by the loop.",
+      "topic": "Loops"
+    },
+    {
+      "question": "Which loop is not supported in Python?",
+      "correct_answer": "do-while",
+      "explanation": "Python does not have a 'do-while' loop; it only supports 'for' and 'while' loops.",
+      "topic": "Loops"
+    },
+    {
+      "question": "Which of the following correctly creates a class in Python?",
+      "correct_answer": "class MyClass():",
+      "explanation": "Python uses the 'class' keyword to define a class, followed by parentheses for optional inheritance.",
+      "topic": "Classes and Objects"
+    },
+    {
+      "question": "What will be the output of the following code: class MyClass: def _init_(self): self.x = 10; obj = MyClass(); print(obj.x)?",
+      "correct_answer": "10",
+      "explanation": "The '_init_' method initializes 'x' to 10, and the object 'obj' retrieves this value.",
+      "topic": "Classes and Objects"
+    },
+    {
+      "question": "What will be the output of the following code: print(5 // 2)?",
+      "correct_answer": "2",
+      "explanation": "The '//' operator performs integer (floor) division, so 5 divided by 2 results in 2.",
+      "topic": "Operators"
+    },
+    {
+      "question": "Which operator is used for exponential calculation in Python?",
+      "correct_answer": "",
+      "explanation": "The '' operator raises a number to the power of another, e.g., 2**3 = 8.",
+      "topic": "Operators"
+    },
+    {
+      "question": "What will the following code return: len(['a', 'b', 'c'])?",
+      "correct_answer": "3",
+      "explanation": "The 'len()' function returns the number of items in the list, which is 3.",
+      "topic": "Lists"
+    },
+    {
+      "question": "Which method is used to add an item to a list?",
+      "correct_answer": "append",
+      "explanation": "The 'append()' method adds an element to the end of the list.",
+      "topic": "Lists"
+    },
+    {
+      "question": "How can you access the second element of a tuple (1, 2, 3)?",
+      "correct_answer": "2",
+      "explanation": "Tuple indexing starts at 0, so the second element is at index 1, which is 2.",
+      "topic": "Tuples"
+    },
+    {
+      "question": "What is the key difference between a list and a tuple?",
+      "correct_answer": "Tuples are immutable",
+      "explanation": "Unlike lists, tuples cannot be modified after creation, making them immutable.",
+      "topic": "Tuples"
+    },
+    {
+      "question": "Which method is used to retrieve a value from a dictionary by its key?",
+      "correct_answer": "get",
+      "explanation": "The 'get()' method retrieves the value associated with a specified key in a dictionary.",
+      "topic": "Dictionaries"
+    },
+    {
+      "question": "What will be the output of {'a': 1, 'b': 2}['a']?",
+      "correct_answer": "1",
+      "explanation": "The key 'a' corresponds to the value 1 in the dictionary.",
+      "topic": "Dictionaries"
+    },
+    {
+      "question": "How do you define a function in Python?",
+      "correct_answer": "def",
+      "explanation": "Functions in Python are defined using the 'def' keyword.",
+      "topic": "Functions"
+    },
+    {
+      "question": "What is the output of the code: def func(x): return x * 2; print(func(5))?",
+      "correct_answer": "10",
+      "explanation": "The function 'func' multiplies its input by 2, so func(5) returns 10.",
+      "topic": "Functions"
+    },
+    {
+      "question": "Which keyword is used to handle exceptions in Python?",
+      "correct_answer": "try",
+      "explanation": "The 'try' keyword is used to test a block of code for errors.",
+      "topic": "Exceptions"
+    },
+    {
+      "question": "What will be the output of: try: 1/0 except ZeroDivisionError: print('Error')?",
+      "correct_answer": "Error",
+      "explanation": "The 'except' block catches the ZeroDivisionError and prints 'Error'.",
+      "topic": "Exceptions"
+    },
+    {
+      "question": "Which method is used to read the contents of a file?",
+      "correct_answer": "read",
+      "explanation": "The 'read()' method reads the entire content of a file as a string.",
+      "topic": "File Handling"
+    },
+    {
+      "question": "Which mode is used to open a file for appending?",
+      "correct_answer": "a",
+      "explanation": "The 'a' mode is used to open a file for appending content to the end of the file.",
+      "topic": "File Handling"
+    }
 ]
 
 df = pd.DataFrame(data)
-question_embeddings = None  # Will be initialized with BERT embeddingsr
+question_embeddings = None  # Will be initialized with BERT embeddings
 translator = Translator()
-dataset = None
 
+# Initialize question embeddings for student evaluation
 def init_embeddings():
     global question_embeddings
     question_embeddings = get_embeddings(df['question'].tolist())
 
-# Helper functions
 def get_embeddings(texts):
     inputs = tokenizer(texts, padding=True, truncation=True, return_tensors="pt")
     with torch.no_grad():
@@ -111,142 +267,110 @@ def evaluate_student(questions, answers):
             
     return results, weak_topics
 
-def load_dataset(dataset_file: str) -> dict:
-    with open(dataset_file, "r") as file:
-        return json.load(file)
+def calculate_weights(input_text):
+    text = input_text.lower()
+    t5_score = 0
+    ollama_score = 0.3  # Base score for Ollama to favor it
 
-def find_best_response(user_prompt: str, intents: list[str]) -> str | None:
-    matches = get_close_matches(user_prompt, intents, n=1, cutoff=0.6)
-    return matches[0] if matches else None
+    # Calculate T5 score based on keywords
+    for keyword, weight in T5_KEYWORDS.items():
+        if keyword in text:
+            t5_score += weight
 
-def detect_emotion() -> str:
-    return random.choice(["neutral", "happy", "frustrated"])
+    # Calculate Ollama score based on patterns
+    for pattern, weight in OLLAMA_PATTERNS.items():
+        if re.search(pattern, text):
+            ollama_score += weight
 
-def extract_ticket_info(user_prompt: str) -> tuple[int, int]:
-    adult_tickets = 0
-    children_tickets = 0
-    adult_match = re.search(r'(\d+)\s*adult', user_prompt, re.IGNORECASE)
-    children_match = re.search(r'(\d+)\s*child', user_prompt, re.IGNORECASE)
+    # Normalize scores with Ollama bias
+    total = t5_score + ollama_score
+    if total == 0:
+        return 0.2, 0.8  # Even stronger default bias towards Ollama
+
+    t5_weight = (t5_score / total) * 0.8  # Reduce T5 influence
+    ollama_weight = (ollama_score / total) * 1.2  # Boost Ollama influence
+
+    # Ensure weights sum to 1
+    total_weight = t5_weight + ollama_weight
+    t5_weight = t5_weight / total_weight
+    ollama_weight = ollama_weight / total_weight
+
+    return t5_weight, ollama_weight
+
+def generate_t5_response(input_text):
+    try:
+        inputs = tokenizer_chat(input_text, return_tensors="pt", padding=True, truncation=True, max_length=512)
+        inputs = {k: v.to(device) for k, v in inputs.items()}
+        
+        outputs = model_chat.generate(
+            inputs['input_ids'],
+            max_length=120,
+            num_beams=3,
+            no_repeat_ngram_size=2,
+            temperature=0.7
+        )
+        
+        return tokenizer_chat.decode(outputs[0], skip_special_tokens=True)
+    except Exception as e:
+
+        return None
+
+def query_ollama(input_text, model_name="mistral"):
+    try:
+        response = requests.post(
+            OLLAMA_API_URL,
+            json={
+                "model": model_name,
+                "prompt": input_text,
+                "stream": False
+            }
+        )
+        if response.status_code == 200:
+            return response.json().get('response', '').strip()
+        return None
+    except Exception as e:
     
-    if adult_match:
-        adult_tickets = int(adult_match.group(1))
-    if children_match:
-        children_tickets = int(children_match.group(1))
-    
-    return adult_tickets, children_tickets
+        return None
 
-def response_to_prompts(question: str, dataset: dict, user_prompt: str) -> str | None:
-    for q in dataset["intents"]:
-        if question in q["questions"]:
-            emotion = detect_emotion()
-            
-            if q["intent"] == "date_time":
-                current_date = datetime.now().strftime("%B %d, %Y")
-                current_time = datetime.now().strftime("%I:%M %p")
-                response_list = q["responses"].get(emotion, q["responses"]["neutral"])
-                response_template = random.choice(response_list)
-                return response_template.format(date=current_date, time=current_time)
-            
-            if q["intent"] == "book_tickets_with_quantity":
-                num_adults, num_children = extract_ticket_info(user_prompt)
-                total_price = num_adults * 300 + num_children * 200
-                response_list = q["responses"].get(emotion, q["responses"]["neutral"])
-                response_template = random.choice(response_list)
-                return response_template.format(
-                    num_adults=num_adults,
-                    num_children=num_children,
-                    total_price=total_price
-                )
-            
-            response_list = q["responses"].get(emotion, q["responses"]["neutral"])
-            return random.choice(response_list)
+def get_blended_response(input_text):
+    t5_weight, ollama_weight = calculate_weights(input_text)
 
-def translate_text(text: str, dest_language: str) -> str:
-    translation = translator.translate(text, dest=dest_language)
-    return translation.text
+    # Select model based on weights
+    if t5_weight > ollama_weight:
+        response = generate_t5_response(input_text)
+        model_used = f"T5 (confidence: {t5_weight:.2f})"
+        
+        # Fallback to Ollama if T5 fails
+        if not response:
+            response = query_ollama(input_text)
+            model_used = f"Ollama (fallback, original T5 weight: {t5_weight:.2f})"
+    else:
+        response = query_ollama(input_text)
+        model_used = f"Ollama (confidence: {ollama_weight:.2f})"
+        
+        # Fallback to T5 if Ollama fails
+        if not response:
+            response = generate_t5_response(input_text)
+            model_used = f"T5 (fallback, original Ollama weight: {ollama_weight:.2f})"
 
-def find_best_match(user_prompt: str, dataset: dict) -> tuple[str, str, float]:
-    best_confidence = 0
-    best_answer = None
-    matched_intent = None
-    
-    # Clean and normalize input
-    user_prompt = user_prompt.lower().strip()
-    
-    for intent in dataset["intents"]:
-        # Check each question in the intent
-        for question in intent["questions"]:
-            # Get similarity scores using different methods
-            exact_match = user_prompt == question.lower()
-            close_matches = get_close_matches(user_prompt, [question.lower()], n=1, cutoff=0.6)
-            word_overlap = len(set(user_prompt.split()) & set(question.lower().split())) / len(set(user_prompt.split()))
-            
-            # Calculate confidence score
-            confidence = 0
-            if exact_match:
-                confidence = 1.0
-            elif close_matches:
-                confidence = 0.8
-            elif word_overlap > 0.5:
-                confidence = word_overlap
-            
-            # Update best match if confidence is higher
-            if confidence > best_confidence:
-                best_confidence = confidence
-                best_answer = random.choice(intent["answers"])
-                matched_intent = intent["intent"]
-    
-    return best_answer, matched_intent, best_confidence
+    return response, model_used
 
 @app.route('/api/chat', methods=['POST'])
 def chat():
     data = request.json
-    user_prompt = data.get('message')
-    user_language = data.get('language', 'en')
+    user_input = data.get('message', '')
 
-    if not user_prompt:
-        return jsonify({'response': 'Sorry! No input detected.'}), 400
+    if not user_input:
+        return jsonify({"error": "No input provided"}), 400
 
-    try:
-        # Translate to English if needed
-        if user_language != 'en':
-            translated_prompt = translate_text(user_prompt, 'en')
-        else:
-            translated_prompt = user_prompt
+    response, model_used = get_blended_response(user_input)
+    return jsonify({
+        "response": response,
+        "model_used": model_used
+    })
 
-        # Find best matching response
-        answer, intent, confidence = find_best_match(translated_prompt, dataset)
-        
-        # If confidence is too low, provide a fallback response
-        if confidence < 0.4:
-            return jsonify({
-                'response': 'I apologize, but I am not confident about answering that question. Could you please rephrase or ask about specific programming concepts?',
-                'confidence': confidence,
-                'videos': fetch_youtube_videos("python programming basics", max_results=3)
-            }), 200
-            
-        # Get relevant videos based on intent
-        videos = fetch_youtube_videos(f"python {intent} tutorial", max_results=3)
-        
-        # Translate response if needed
-        if user_language != 'en':
-            answer = translate_text(answer, user_language)
-        
-        return jsonify({
-            'response': answer,
-            'intent': intent,
-            'confidence': confidence,
-            'videos': videos
-        })
 
-    except Exception as e:
-        print(f"Error in chat endpoint: {str(e)}")
-        return jsonify({
-            'response': 'Sorry, there was an error processing your request.',
-            'error': str(e)
-        }), 500
-
-# API Routes
+# API Routes for YouTube Videos and Student Evaluation
 @app.route('/api/videos', methods=['POST'])
 def get_videos():
     data = request.json
@@ -270,7 +394,7 @@ def evaluate():
         "weak_topics": dict(weak_topics)
     })
 
-if __name__ == '__main__':
-    dataset = load_dataset("dataset_hackathon.json")
-    init_embeddings()
-    app.run(debug=True, port=5000)
+
+# Initialize embeddings and start the app
+init_embeddings()
+app.run(debug=True, port=5001)

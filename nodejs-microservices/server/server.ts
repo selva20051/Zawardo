@@ -16,7 +16,15 @@ const app = express();
 
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors());
+
+// Updated CORS configuration
+app.use(cors({
+  origin: ['http://localhost:5173', 'http://localhost:5555'],  // Allow both origins
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'token'], // Add 'token' to allowed headers
+  exposedHeaders: ['set-cookie']
+}));
 
 app.use(session({
   secret: process.env.JWT_SECRET,  // Replace with a secure key
