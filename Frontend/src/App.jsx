@@ -5,6 +5,7 @@ import LoginPage from './components/login'
 import SignUpPage from './components/signup'
 import InsideClass from './components/insideclass'
 import Quiz from './components/quize'
+import ChatbotMenu from './components/chatbotmenu'
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/signup" element={<SignUpPage />} />
           <Route path="/classroom/:id" element={<InsideClass />} />
           <Route path="classroom/:id/quiz" element={<Quiz />} />
+          <Route path="/chatbot" element={<ChatbotMenu />} />
 
         </Routes>
       </div>
