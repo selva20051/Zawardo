@@ -1,0 +1,76 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+enum Role {
+  USER  // For students
+  ADMIN // For teachers
+}
+
+model User {
+  id       Int     @id @default(autoincrement())
+  email    String  @unique
+  name     String?
+  password String
+  role     Role    @default(USER)  // Default role is USER for students
+  classrooms Classroom[] @relation("TeacherClassrooms") // Relation for teacher-created classrooms
+  tasks    Task[]    @relation("TeacherTasks") // Tasks assigned by the teacher
+  todos    Todo[]    // A user's personal to-do items
+  classroomMemberships ClassroomMember[] // Relation for the classrooms a student has joined
+  submissions Submission[] // Relation for assignment submissions
+  googleId String? @unique
+}
+
+model Classroom {
+  id          Int       @id @default(autoincrement())
+  name        String
+  teacherId   Int
+  teacher     User       @relation("TeacherClassrooms", fields: [teacherId], references: [id]) // Each classroom has one teacher
+  members     ClassroomMember[] // Many-to-many relationship with students
+  tasks       Task[] // Tasks associated with the classroom
+}
+
+model ClassroomMember {
+  id          Int    @id @default(autoincrement())
+  userId      Int
+  classroomId Int
+  user        User     @relation(fields: [userId], references: [id]) // The student user in the classroom
+  classroom   Classroom @relation(fields: [classroomId], references: [id]) // The classroom the student joined
+  
+  @@unique([userId, classroomId]) // Ensure a student can join a classroom only once
+}
+
+model Task {
+  id          Int    @id @default(autoincrement())
+  description String
+  dueDate     DateTime
+  classroomId Int
+  classroom   Classroom @relation(fields: [classroomId], references: [id]) // Task is assigned to a classroom
+  assignedBy  Int
+  teacher     User     @relation("TeacherTasks", fields: [assignedBy], references: [id]) // The teacher who assigned the task
+  submissions Submission[] // Task can have multiple student submissions
+}
+
+model Todo {
+  id          Int    @id @default(autoincrement())
+  description String
+  isCompleted Boolean @default(false) // Flag to mark task completion
+  userId      Int
+  user        User    @relation(fields: [userId], references: [id]) // Each todo belongs to a student (user)
+}
+
+model Submission {
+  id          Int     @id @default(autoincrement())
+  fileUrl     String  // URL or path where the submitted file is stored
+  submittedAt DateTime @default(now()) // Timestamp of the submission
+  userId      Int
+  taskId      Int
+  user        User     @relation(fields: [userId], references: [id]) // Student who submitted the assignment
+  task        Task     @relation(fields: [taskId], references: [id]) // Task the assignment is for
+}

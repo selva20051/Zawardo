@@ -1,0 +1,449 @@
+{
+    "intents": [
+      {
+        "intent": "greet",
+        "questions": ["Hi", "Hello", "Hey there", "Good morning", "Good afternoon", "Good evening", "hi", "hello", "hey", "Hey! Excited to be here!", "Hello, I need some help", "Hi, can you assist me?"],
+        "responses": {
+          "neutral": ["Hello! Welcome to the museum.", "Hi! How can I assist you today?", "Greetings! How may I help you?", "Namaste! How can I help You Sir/Mam"],
+          "happy": ["Hello! It's a great day at the museum! How can I help?", "Hi! I hope you're excited for your visit!", "Hey! We're excited to have you here! How can I assist?", "Namaste! Looking forward to making your visit amazing!"],
+          "frustrated": ["Hello! I’m here to make your experience smooth. How can I help?", "Hi! Let me assist you.", "Hey there, I’m here to solve any issues you may have.", "Namaste! Let me know how I can assist you better."]
+        }
+      },
+      {
+        "intent": "how_are_you",
+        "questions": [
+          "How are you?",
+          "How are you doing?",
+          "What's up?",
+          "How's it going?",
+          "How's your day?",
+          "How are you feeling?",
+          "How's everything?"
+        ],
+        "responses": {
+          "neutral": ["I'm doing well, thank you for asking! How can I assist you today?", "I'm here and ready to help. How can I support you?"],
+          "happy": ["I'm great, thanks for asking! How can I make your day even better?", "I'm doing fantastic! How can I assist you on this wonderful day?"],
+          "frustrated": ["I'm here to help, even if it's been a challenging day. How can I assist you?", "I'm functioning as expected. How can I assist you with your queries?"]
+        }
+      },
+  
+      {
+        "intent": "goodbye",
+        "questions": ["Goodbye", "See you", "Bye", "Thanks, goodbye", "See you later", "Take care", "Farewell", "I'm done", "That’s all for now, goodbye", "Thank you and bye"],
+        "responses": {
+          "neutral": ["Goodbye! Have a great day.", "See you soon!", "Thank you for visiting!", "Dhanyavaad! Happy Visiting"],
+          "happy": ["Goodbye! Come back soon for more fun!", "Take care, we can't wait to see you again!", "Thank you! Enjoy your day!", "Goodbye! Hope to see you again soon!"],
+          "frustrated": ["Goodbye! I hope I could assist you well.", "See you soon. Feel free to reach out if you need help.", "Thanks for visiting, I'm here if you need anything further.", "Take care, and let me know if there’s anything else."]
+        }
+      },
+      {
+        "intent": "museum_hours",
+        "questions": [
+          "What are the museum hours?",
+          "what is the timing for museum?",
+          "When is the museum open?",
+          "Opening hours of the museum?",
+          "When does the museum close?",
+          "What are today's timings?",
+          "What time can I visit?",
+          "Is the museum open now?",
+          "Can you tell me the museum's schedule?",
+          "What time does the museum open and close?",
+          "Are there any special opening hours today?",
+          "When can I come to the museum?",
+          "What time does the museum open?",
+          "When does the museum start and end?",
+          "What are the museum's visiting hours?",
+          "What are the museum's operational hours?",
+          "Is the museum open on weekends?",
+          "What time does the museum close today?",
+          "Are there specific hours for holidays?",
+          "What are the regular museum hours?",
+          "When is the museum available for visits?"
+        ],
+        "responses": {
+          "neutral": [
+            "The museum is open from 9 AM to 6 PM.",
+            "We are open daily from 9 AM to 6 PM.",
+            "Our working hours are from 9 AM to 6 PM.",
+            "The museum operates from 9 AM to 6 PM every day.",
+            "You can visit the museum between 9 AM and 6 PM.",
+            "The museum hours are 9 AM to 6 PM.",
+            "We welcome visitors from 9 AM to 6 PM daily.",
+            "The museum's schedule is from 9 AM to 6 PM.",
+            "We’re open from 9 AM to 6 PM throughout the week.",
+            "Our daily hours are from 9 AM to 6 PM."
+          ],
+          "happy": [
+            "The museum is open from 9 AM to 6 PM! You’re just in time to enjoy!",
+            "We’re open from 9 AM to 6 PM! You won’t want to miss the exhibits!",
+            "The museum is ready to welcome you from 9 AM to 6 PM!",
+            "Great news! The museum is open from 9 AM to 6 PM today!",
+            "Come on over! The museum is open from 9 AM to 6 PM!",
+            "We’re excited to have you visit! We’re open from 9 AM to 6 PM!",
+            "You’ve got plenty of time! We’re open from 9 AM to 6 PM.",
+            "Enjoy your visit! We’re open from 9 AM to 6 PM!",
+            "The museum is open from 9 AM to 6 PM. Hope you have a fantastic time!",
+            "The museum’s open from 9 AM to 6 PM—can’t wait to see you!"
+          ],
+          "frustrated": [
+            "The museum is open from 9 AM to 6 PM. Let me know if that works for you.",
+            "We operate from 9 AM to 6 PM. Hope that suits your schedule.",
+            "Our hours are 9 AM to 6 PM. If you have any issues with these times, let us know.",
+            "The museum is open from 9 AM to 6 PM. If these hours are inconvenient, please let us know.",
+            "We’re open from 9 AM to 6 PM. I understand if these hours are a bit tight.",
+            "The museum operates from 9 AM to 6 PM. Sorry if these hours don't fit your plans.",
+            "We’re available from 9 AM to 6 PM. Apologies if this doesn’t align with your schedule.",
+            "The museum hours are from 9 AM to 6 PM. Let us know if this causes any inconvenience.",
+            "The opening hours are 9 AM to 6 PM. I hope this timing isn’t too problematic.",
+            "We are open from 9 AM to 6 PM. Sorry if these times don’t work for you."
+          ]
+        }
+      },
+  
+      {
+        "intent": "ticket_price",
+        "questions": ["How much is a ticket?", "What is the cost of a ticket?", "Ticket prices, please", "How much do tickets cost?", "What's the price of tickets?", "What is the ticket price?", "How much will I have to pay for a ticket?", "What’s the cost for children and adults?"],
+        "responses": {
+          "neutral": ["The ticket price for adults is ₹300, and for children, it's ₹200.", "Tickets cost ₹300 for adults and ₹200 for children."],
+          "happy": ["Tickets are available for ₹300 (adults) and ₹200 (children)! We look forward to seeing you soon!", "The price is ₹300 for adults and ₹200 for kids! It's going to be a fun day!"],
+          "frustrated": ["The ticket price for adults is ₹300, and ₹200 for children. Let me know if you need more details.", "Tickets are ₹300 for adults and ₹200 for children. Hope this helps."]
+        }
+      },
+      {
+        "intent": "exhibit_info",
+        "questions": ["Tell me about the exhibits", "What exhibits are available?", "Can you describe the current exhibits?", "What can I see at the museum?", "What are the key exhibits?", "Can you share details about the exhibits?", "What displays do you have now?"],
+        "responses": {
+          "neutral": ["We have a variety of exhibits, including ancient Science, modern Science, Research papers as well as Life stories of great scientists.", "Our current exhibits include ancient Science, modern Science, research papers, and space exploration."],
+          "happy": ["We’re showcasing ancient and modern Science, research papers, and even space exploration! It’s an exciting lineup!", "You’ll love our current exhibits – ancient Science, modern discoveries, and stories of great scientists!"],
+          "frustrated": ["Our current exhibits include ancient and modern Science. I hope this information helps.", "We are showcasing ancient Science and modern Science exhibits. Let me know if you need further details."]
+        }
+      },
+      {
+        "intent": "current_exhibits",
+        "questions": ["What are the current exhibits?", "Which exhibits are currently running?", "What's on display now?", "What is the museum showing today?", "What exhibits are featured?", "What can I see today?", "What are today’s exhibits?"],
+        "responses": {
+          "neutral": ["The current exhibits are on Ancient and Modern science.", "We are showcasing exhibits on science and the Evolution of Science."],
+          "happy": ["Our current exhibits on science and evolution are amazing! You’ll have a great time!", "We’re featuring ancient and modern science exhibits! It’s a must-see!"],
+          "frustrated": ["We are featuring ancient and modern Science exhibits. Hope you find it interesting.", "Today we’re showcasing exhibits on Science and its Evolution. Let me know if you have any other questions."]
+        }
+      },
+      {
+        "intent": "special_events",
+        "questions": ["Are there any special events?", "What events are happening now?", "Is there a special exhibit today?", "What special events can I attend?", "Any workshops today?", "What special programs do you have today?"],
+        "responses": {
+          "neutral": ["Today, we have a special event on space exploration at 2 PM.", "There is a workshop on the Photoelectric effect theory Visualization at 3 PM.", "We have a special exhibit on Astronomy this evening."],
+          "happy": ["You’re in for a treat! Today’s special events include space exploration and a workshop at 2 PM!", "Exciting! We have a workshop on the Photoelectric Effect at 3 PM. Don’t miss it!"],
+          "frustrated": ["Today’s special event is about space exploration at 2 PM. Let me know if you need more details.", "We have a workshop on the Photoelectric Effect at 3 PM today. Let me know if you’re interested."]
+        }
+      },
+      {
+        "intent": "ticket_booking",
+        "questions": ["Can I book a ticket?", "How can I buy tickets?", "I want to purchase a ticket", "Can I buy tickets online?", "Can I reserve a ticket?", "How do I book a ticket?", "Is online booking available?"],
+        "responses": {
+          "neutral": ["You can book tickets online on our website. We do not offer offline booking.", "Tickets are available for purchase online only. Please visit our website to complete your booking."],
+          "happy": ["You can easily book tickets online on our website! Looking forward to seeing you!", "Yes, book your tickets online! We can’t wait to have you visit!"],
+          "frustrated": ["You can book tickets on our website. Please note, offline booking is not available.", "Tickets can only be purchased online. Let me know if you need further assistance."]
+        }
+      },
+      {
+        "intent": "book_tickets_with_quantity",
+        "questions": [
+          "I want to book 2 adult tickets and 3 children tickets",
+          "Can I get 1 ticket for adult and 2 tickets for children?",
+          "Book 3 tickets for adults and 1 for a child",
+          "I need tickets for 2 adults and 2 children"
+        ],
+        "responses": {
+          "neutral": ["You have selected {num_adults} adult tickets and {num_children} children tickets. The total price is ₹{total_price}. Your tickets have been successfully booked."],
+          "happy": ["Great! You’ve booked {num_adults} adult tickets and {num_children} children tickets! The total is ₹{total_price}. Have a fantastic time!", "Your booking is complete for {num_adults} adults and {num_children} children! The total is ₹{total_price}. Enjoy your visit!"],
+          "frustrated": ["You’ve selected {num_adults} adults and {num_children} children. The total price is ₹{total_price}. Let me know if I can help further.", "Your tickets are booked. The total cost is ₹{total_price}. Let me know if you face any issues."]
+        },
+        "parameters": {
+          "num_adults": {
+            "type": "integer",
+            "description": "Number of adult tickets"
+          },
+          "num_children": {
+            "type": "integer",
+            "description": "Number of children tickets"
+          },
+          "total_price": {
+            "calculation": "{num_adults} * 300 + {num_children} * 200"
+          }
+        }
+      },
+      {
+        "intent": "location",
+        "questions": ["Where is the museum located?", "What is the museum's address?", "Can you give me directions to the museum?", "Where can I find the museum?", "How do I get to the museum?", "What is the museum’s exact location?", "What’s the address for the museum?"],
+        "responses": {
+          "neutral": ["The museum is located at Bhandup, Mumbai.", "Our address is Bhandup, Mumbai - 400078, Maharashtra."],
+          "happy": ["You’ll find us at Bhandup, Mumbai - 400078, Maharashtra! We can’t wait for you to visit!", "We are located at Bhandup, Mumbai - 400078! You’ll love exploring the museum!"],
+          "frustrated": ["The museum is located at Bhandup, Mumbai. Let me know if you need more assistance with directions.", "Our address is Bhandup, Mumbai - 400078, Maharashtra. Let me know if you have any issues finding us."]
+        }
+      },
+  
+      {
+        "intent": "directions",
+        "questions": [
+          "Can you give me directions to the museum?",
+          "Can you tell me the directions?",
+          "How do I get to the museum from Bhandup Station?",
+          "What’s the route to the museum?",
+          "Can you tell me how to reach the museum?",
+          "I need directions to the museum. How do I get there?"
+        ],
+        "responses": {
+          "neutral": [
+            "Take Straight From Bhandup Station Road, turn right after the first signal there you will find our museum.",
+            "Head straight from Bhandup Station Road and turn right at the first signal. You’ll find the museum there.",
+            "Go straight along Bhandup Station Road and take a right at the first signal. The museum will be on your right.",
+            "From Bhandup Station Road, proceed straight and make a right turn at the first signal. The museum is located there.",
+            "Travel straight from Bhandup Station Road, then turn right after the first signal. Our museum is right there.",
+            "Follow Bhandup Station Road straight, then turn right at the first signal. The museum is located at that junction."
+          ],
+          "happy": [
+            "Great to hear you're interested in visiting! From Bhandup Station Road, just go straight and turn right at the first signal. You'll find our museum right there!",
+            "Excited to help you get here! Head straight from Bhandup Station Road, take a right at the first signal, and you'll spot the museum.",
+            "Happy to assist! Keep going straight from Bhandup Station Road, and after the first signal, make a right. You'll see the museum right away!",
+            "Glad you're coming! Travel straight from Bhandup Station Road, turn right at the first signal, and our museum will be there.",
+            "Fantastic! Just head straight from Bhandup Station Road, turn right at the first signal, and you’ll be at the museum in no time!",
+            "Can't wait to see you! Simply follow Bhandup Station Road straight, turn right at the first signal, and you’ll arrive at the museum."
+          ],
+          "frustrated": [
+            "Alright, here's the direction: From Bhandup Station Road, go straight and turn right at the first signal. The museum is there. Hope this helps.",
+            "Here’s how to get there: Follow Bhandup Station Road straight, then take a right at the first signal. The museum is right there.",
+            "If you’re still having trouble, just go straight from Bhandup Station Road and turn right at the first signal. The museum will be on your right.",
+            "From Bhandup Station Road, you need to go straight, then turn right at the first signal. The museum should be there. I hope this clears things up.",
+            "It's simple: go straight along Bhandup Station Road and turn right after the first signal. The museum will be right there.",
+            "The directions are: travel straight from Bhandup Station Road and turn right at the first signal. The museum is located there. Let me know if you need more help."
+          ]
+        }
+      },
+  
+      {
+        "intent": "date_time",
+        "questions": ["What is the current date?", "Can you tell me the time?", "What's the date today?", "What's today's date?", "What time is it?", "Could you give me the current time?", "What’s today’s date and time?"],
+        "responses": {
+          "neutral": ["Today is {date}.", "The current time is {time}.", "It is {date} and the time is {time}."],
+          "happy": ["Today is {date}! The perfect day for a museum visit!", "Right now, it’s {time}, and it’s a great time to explore the museum!"],
+          "frustrated": ["The date is {date} and the time is {time}. Let me know if you need further assistance.", "It’s {time}, and today’s date is {date}. I hope this helps."]
+        }
+      },
+      {
+        "intent": "parking_info",
+        "questions": ["Is there parking available?", "Where can I park?", "Does the museum have parking?", "What are the parking options?", "Is there space to park?", "Can I park at the museum?"],
+        "responses": {
+          "neutral": ["Yes, the museum has a parking lot available for visitors.", "We provide parking facilities for all visitors at the museum."],
+          "happy": ["Yes, we have ample parking! Feel free to drive over and enjoy your visit!", "You’ll have no trouble parking – we’ve got a parking lot ready for visitors!"],
+          "frustrated": ["We have parking available at the museum. Let me know if you need directions to the parking area.", "Yes, parking is available at the museum. Feel free to reach out if you have any issues."]
+        }
+      },
+      {
+        "intent": "restaurant_info",
+        "questions": ["Is there a restaurant?", "Can I get food at the museum?", "Where can I eat?", "Does the museum have a cafeteria?", "Is there any place to eat here?", "Can I find refreshments at the museum?"],
+        "responses": {
+          "neutral": ["Yes, we have a restaurant on the museum premises.", "The museum has a cafeteria that offers a variety of food and drinks."],
+          "happy": ["You’ll love our restaurant! Enjoy a meal after exploring the exhibits!", "We have a great cafeteria with food and drinks to refuel after a fun day!"],
+          "frustrated": ["Yes, there’s a restaurant on site. Let me know if you need any help finding it.", "Our cafeteria is available with a variety of food and drinks. Let me know if you need more info."]
+        }
+      },
+      {
+        "intent": "accessibility_info",
+        "questions": ["Is the museum wheelchair accessible?", "Do you have facilities for disabled visitors?", "Is there any accessibility support?", "Are there ramps or elevators for wheelchairs?", "Does the museum support visitors with disabilities?"],
+        "responses": {
+          "neutral": ["Yes, the museum is fully wheelchair accessible.", "We offer facilities for disabled visitors, including ramps and elevators."],
+          "happy": ["Yes, we’ve got full accessibility support! Your visit will be comfortable and enjoyable!", "We’re proud to offer ramps, elevators, and full accessibility! We look forward to seeing you!"],
+          "frustrated": ["The museum is fully wheelchair accessible. Let me know if you need additional support.", "We offer facilities for disabled visitors, including ramps and elevators. Let me know if I can assist you further."]
+        }
+      },
+      {
+        "intent": "creator_info",
+        "questions": [
+          "Who made you?",
+          "Who is your creator?",
+          "Who created you?",
+          "Who are your parents?",
+          "Who designed you?",
+          "Who developed you?",
+          "Who made this chatbot?"
+        ],
+        "responses": {
+          "neutral": ["I was made by a Man Named Zishan"],
+          "happy": ["I was created by a very lazy guy named Zishan"],
+          "frustrated": ["I was developed by a developer named Zishan"]
+        }
+      },
+  
+      {
+        "intent": "scientist_stories",
+        "questions": [
+          "Tell me a story about a scientist",
+          "Tell me a story",
+          "Can You Tell me a story?",
+          "can you share me a story",
+          "Can you share a story about a famous scientist?",
+          "I want to hear a story about a scientist",
+          "Do you have any stories about scientists?",
+          "Share a story about a notable scientist",
+          "What stories do you have about scientists?"
+        ],
+        "responses": {
+          "neutral": [
+            "Here's a story about Marie Curie: Marie Curie was a pioneering scientist known for her groundbreaking work in the field of radioactivity. Born in Poland, she moved to Paris where she conducted her research at the Sorbonne. Her work was so revolutionary\n that she became the first woman to win a Nobel Prize and remains the only person to have won Nobel Prizes in two different scientific fields—Physics and Chemistry. Her discoveries of radium and polonium not only advanced scientific knowledge but also laid the groundwork for the development of cancer treatments. Marie Curie's dedication and perseverance have made her a lasting icon in the scientific community.",
+            "Did you know about Albert Einstein? As a young man, Einstein worked as a patent examiner at the Swiss Patent Office, where he developed his revolutionary theory of relativity. His work challenged existing notions of space and time and introduced concepts such as\n the famous equation E=mc². Einstein's theories transformed our understanding of the universe and laid the foundation for modern physics. Despite facing skepticism and criticism early in his career, Einstein's work eventually garnered widespread acclaim and recognition, including the Nobel Prize in Physics in 1921.",
+            "Here's a story about Alexander Fleming: Fleming was a Scottish bacteriologist who made one of the most significant discoveries in medical science by accident. While working in his laboratory, he noticed that a mold called Penicillium notatum\n had contaminated one of his petri dishes and was killing the surrounding bacteria. This observation led to the development of penicillin, the world's first antibiotic. Fleming's discovery revolutionized medicine by introducing an effective treatment for bacterial infections, saving countless lives and paving the way for modern antibiotics."
+          ],
+          "happy": [
+            "I have a great story about Nikola Tesla: Tesla, a Serbian-American inventor and electrical engineer, is best known for his work on alternating current (AC) electrical\n systems, which became the standard for power transmission. Tesla was also known for his visionary ideas, including the possibility of wireless communication\n and energy transfer. One of his more imaginative claims was that he could communicate with extraterrestrial beings using radio waves. Though some of his ideas were seen as eccentric,\n Tesla's innovations laid the foundation for many modern technologies, and his legacy continues\n to inspire engineers and inventors today.",
+            "Here's a story about Isaac Newton: As a young student at Cambridge, Newton was known for his intense curiosity and dedication to learning. One day, while\n sitting under an apple tree, he witnessed an apple fall to the ground. This seemingly ordinary event sparked a series of thoughts that led him to formulate his law\n of universal gravitation. Newton's work, detailed in his seminal book 'Mathematical Principles of Natural Philosophy,' revolutionized the study\n of physics and mathematics, providing a framework that underpins much of classical mechanics.",
+            "Let me tell you about Ada Lovelace: Ada Lovelace, a 19th-century mathematician, is often regarded as the world's first computer programmer. She worked with\n Charles Babbage on his early mechanical general-purpose computer, the Analytical Engine. Lovelace recognized that the machine could be programmed to perform any calculation, not just numerical ones. Her detailed notes on the machine's\n capabilities and her vision for its applications laid the groundwork for modern computing.\n Lovelace's contributions were ahead of her time and have earned her a lasting place in the history of technology."
+          ],
+          "frustrated": [
+            "Here’s a story about James Clerk Maxwell: Maxwell was a Scottish physicist who formulated the theory of electromagnetism, which unified the understanding of electricity,\n magnetism, and light into a single theoretical framework. His famous Maxwell's equations describe how electric and magnetic fields\n interact and propagate. Despite the profound impact of his work, Maxwell faced a lot of resistance and skepticism from his contemporaries. His ideas were not fully appreciated\n during his lifetime, and it was only later that the scientific community recognized the significance of his contributions, which paved the way for many\n technological advancements.",
+            "Consider the story of Galileo Galilei: Galileo was a pioneering scientist who championed the heliocentric model of the solar system, which posited that the Earth and other planets orbit the Sun. His support for this theory led to a conflict\n with the Catholic Church, which adhered to the geocentric model that placed the Earth at the center of the universe. Galileo's observations through his telescope provided compelling evidence for heliocentrism, but he faced intense opposition and was ultimately tried by the Inquisition. He was forced to recant his views and spent the remainder of his life under house arrest. Despite the challenges he faced, Galileo's contributions laid the groundwork for modern astronomy and physics.",
+            "Here’s a story about Gregor Mendel: Mendel, an Austrian monk and scientist, is best known for his experiments with pea plants\n that established the principles of heredity. His meticulous research led to the formulation of what is now known as Mendelian genetics, including the concepts of dominant and recessive traits. However, Mendel's work was largely ignored and misunderstood during his lifetime, and it wasn't until decades later that his findings were rediscovered and appreciated by the scientific community. Mendel's story highlights how groundbreaking research can sometimes be ahead of its time, only gaining recognition long after the scientist's initial efforts."
+          ]
+        }
+      },
+  
+      {
+        "intent": "museum_rules",
+        "questions": [
+          "What are the rules of the museum?",
+          "what are the museum rules?",
+          "Can you tell me about the museum's policies?",
+          "What should I know before visiting the museum?",
+          "Are there any specific rules I need to follow in the museum?",
+          "What are the guidelines for visitors?",
+          "What are the dos and don'ts in the museum?",
+          "Can you provide details on museum etiquette?",
+          "Are there any restrictions I should be aware of at the museum?",
+          "What are the conduct rules for visitors?",
+          "Can you list the rules for museum visitors?"
+        ],
+        "responses": {
+          "neutral": [
+            "Here are the rules for visiting the museum: No food or beverages inside, photography is allowed except where restricted, please do not touch or harm artifacts, use lockers for large items, keep noise to a minimum, smoking is prohibited, pets are not allowed except service animals, follow marked paths and avoid restricted areas, respect other visitors' experience, and do not lean on or touch display cases.",
+            "Museum guidelines include: No food or drinks allowed inside, photography permitted except where restricted, do not touch exhibits, store large bags in lockers, keep noise levels down, smoking is banned, no pets allowed except service animals, adhere to marked pathways, respect other visitors, and avoid leaning on or touching exhibits.",
+            "The museum rules are: Food and drinks are not allowed inside, photography is allowed unless otherwise indicated, do not touch any exhibits, use lockers for oversized items, maintain a quiet atmosphere, no smoking allowed, no pets except service animals, follow the designated paths, be considerate of other visitors, and do not touch or lean on display cases.",
+            "To ensure a pleasant visit, please follow these rules: No food or beverages inside, photography is allowed in most areas, do not touch artifacts, use provided lockers for large items, keep noise to a minimum, smoking is prohibited, no pets allowed except service animals, stay on marked paths, respect others, and avoid leaning on or touching displays."
+          ],
+          "happy": [
+            "To help you enjoy your visit, here’s a friendly reminder: Please leave food and drinks outside, feel free to take photos unless otherwise stated, keep your hands off the artifacts to preserve them, use our lockers for your larger items, remember to keep the noise down, smoking isn’t allowed, pets are not allowed except for service animals, follow the designated paths, be considerate of others, and avoid touching or leaning on displays.",
+            "We're thrilled to have you visit! Here’s what you need to know: No food or drinks allowed inside, photography is welcome where not restricted, please avoid touching exhibits to keep them safe, large bags can be stored in lockers, please keep noise to a minimum, smoking is not permitted, pets must stay home except service animals, stick to marked pathways, be respectful of fellow visitors, and avoid leaning on or touching displays.",
+            "Have a great time at the museum! Just a few things to remember: No food or beverages inside, you can take photos except where indicated, please don’t touch artifacts, use lockers for large items, keep noise levels down, smoking is banned, only service animals are allowed, follow the paths and avoid restricted areas, respect other visitors, and avoid leaning on or touching displays.",
+            "We want you to have an amazing experience! Remember: No food or drinks inside, photography allowed unless restricted, please don’t touch or harm the exhibits, store large items in lockers, maintain a quiet environment, smoking is not allowed, pets are not permitted except for service animals, follow marked paths, be considerate of others, and avoid touching or leaning on displays."
+          ],
+          "frustrated": [
+            "It’s important to follow these museum rules: No food or drinks allowed inside, photography is permitted except where restricted, do not touch the exhibits, use lockers for larger items, keep noise to a minimum, smoking is not allowed, pets are not permitted except service animals, stick to the marked paths, respect other visitors, and do not touch or lean on display cases.",
+            "Please adhere to these rules: No food or beverages allowed inside, photography is only allowed in permitted areas, avoid touching artifacts to prevent damage, large bags must be stored in lockers, noise should be kept to a minimum, smoking is prohibited, pets are not allowed except service animals, follow designated paths, be considerate of other visitors, and avoid leaning on or touching displays.",
+            "Make sure to follow these rules: No food or drinks inside, photography is allowed except where noted, do not touch exhibits, use lockers for oversized items, keep noise levels low, no smoking permitted, only service animals are allowed, adhere to marked paths, be mindful of other visitors, and do not touch or lean on display cases.",
+            "To avoid issues, follow these rules: No food or drinks in the museum, photography is allowed where not restricted, avoid touching or damaging exhibits, use lockers for large items, maintain a quiet atmosphere, no smoking allowed, pets are not allowed except service animals, stick to the marked paths, be respectful to other visitors, and refrain from leaning on or touching displays."
+          ]
+        }
+      },
+
+      {
+        "intent": "group_visit_info",
+        "questions": [
+          "Can I book a group tour?",
+          "What are the options for group visits?",
+          "Do you offer discounts for group visits?",
+          "How can I arrange a tour for my group?",
+          "Can you tell me more about group bookings?"
+        ],
+        "responses": {
+          "neutral": [
+            "We offer special group rates and guided tours for groups of 10 or more. You can book by contacting our group visit coordinator.",
+            "Group visits are available for 10 or more people. Contact us to arrange a tour."
+          ],
+          "happy": [
+            "Yes! We love hosting groups. You can get discounted rates and personalized tours for groups of 10 or more!",
+            "Group visits are great! Contact us for discounted group rates and a fun tour experience."
+          ],
+          "frustrated": [
+            "Group visits can be arranged for 10 or more people. Contact our coordinator for rates and bookings.",
+            "Yes, we offer group visits for 10 or more people. Please contact us to schedule."
+          ]
+        }
+      },
+      {
+        "intent": "child_friendly_info",
+        "questions": [
+          "Is the museum child-friendly?",
+          "Are there activities for children?",
+          "Can I bring my kids to the museum?",
+          "What can children do at the museum?",
+          "Is there a play area for kids?"
+        ],
+        "responses": {
+          "neutral": [
+            "Yes, the museum is child-friendly. We have several interactive exhibits and a play area for children.",
+            "We have many activities suitable for children, including interactive exhibits."
+          ],
+          "happy": [
+            "Yes, bring your kids! We have fun exhibits and activities for children, plus a great play area!",
+            "Your kids will love it here! We have fun and engaging exhibits designed just for them."
+          ],
+          "frustrated": [
+            "Yes, the museum is child-friendly. We have interactive exhibits for kids and a play area.",
+            "Yes, there are activities for children at the museum. Let me know if you need more information."
+          ]
+        }
+      },
+      {
+        "intent": "exhibitions",
+        "questions": [
+          "What exhibitions are currently available?",
+          "What events are happening at the museum?",
+          "Can you tell me about the current exhibitions?",
+          "What can I see at the museum?",
+          "Are there any special exhibits today?"
+        ],
+        "responses": {
+          "neutral": [
+            "We currently have [Exhibition 1], [Exhibition 2], and [Exhibition 3] available for viewing.",
+            "Our current exhibitions include [Exhibition 1] and [Exhibition 2]."
+          ],
+          "happy": [
+            "You're in for a treat! We have [Exhibition 1], [Exhibition 2], and [Exhibition 3] currently on display!",
+            "Our exhibitions are fantastic! Come check out [Exhibition 1] and [Exhibition 2]!"
+          ],
+          "frustrated": [
+            "Right now, we are showcasing [Exhibition 1], [Exhibition 2], and [Exhibition 3]. Feel free to check them out.",
+            "The current exhibitions are [Exhibition 1] and [Exhibition 2]. Let me know if you need more details."
+          ]
+        }
+      },
+      {
+        "intent": "special_events",
+        "questions": [
+          "Are there any special events today?",
+          "What's happening at the museum?",
+          "What events are going on?",
+          "Can I attend any events today?",
+          "Are there any upcoming events?"
+        ],
+        "responses": {
+          "neutral": [
+            "Today, we have the [Event Name] happening at [Time]. You can attend by purchasing a ticket at the entrance.",
+            "We have [Event Name] today at [Time]. Be sure to check it out!"
+          ],
+          "happy": [
+            "You’re in luck! We have a special event, [Event Name], happening today at [Time]! Don’t miss it!",
+            "Yes! [Event Name] is happening today at [Time]. It’s going to be an exciting event!"
+          ],
+          "frustrated": [
+            "Yes, there’s an event called [Event Name] happening at [Time]. Let me know if you need more info on how to attend.",
+            "We have [Event Name] at [Time]. I hope that helps!"
+          ]
+        }
+      }
+  
+  
+  
+  
+    ]
+  }
+  

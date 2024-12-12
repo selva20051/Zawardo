@@ -1,0 +1,1837 @@
+{
+    "intents": [
+        {
+            "intent": "database_interaction",
+            "questions": [
+                "What is database interaction in Python?",
+                "How do you interact with a database in Python?",
+                "What does it mean to connect to a database in Python?",
+                "How does Python interact with databases?",
+                "What is the method of connecting to databases using Python?"
+            ],
+            "answers": [
+                "Python provides libraries like sqlite3 for SQLite, SQLAlchemy for ORM, and pymongo for working with NoSQL databases like MongoDB.",
+                "To interact with a relational database, you can use Python's sqlite3 module for SQLite or other libraries like psycopg2 for PostgreSQL."
+            ]
+        },
+        {
+            "intent": "sqlite_with_python",
+            "questions": [
+                "What is SQLite in Python?",
+                "How does SQLite work in Python?",
+                "How do you use SQLite with Python?",
+                "What is the role of SQLite in Python applications?",
+                "How to connect to SQLite in Python?"
+            ],
+            "answers": [
+                "SQLite is a lightweight, embedded database engine supported by Python's sqlite3 module.",
+                "To use SQLite in Python, you can import the sqlite3 module, create a connection, and execute SQL queries using a cursor."
+            ]
+        },
+        {
+            "intent": "using_sqlalchemy",
+            "questions": [
+                "What is SQLAlchemy in Python?",
+                "How do you use SQLAlchemy in Python?",
+                "What is the purpose of SQLAlchemy?",
+                "Why should you use SQLAlchemy with Python?",
+                "How does SQLAlchemy simplify database interaction in Python?"
+            ],
+            "answers": [
+                "SQLAlchemy is a library in Python used for database interactions and supports Object-Relational Mapping (ORM).",
+                "SQLAlchemy allows you to map database tables to Python classes, providing a more abstract and convenient way to work with databases."
+            ]
+        },
+        {
+            "intent": "nosql_databases",
+            "questions": [
+                "What is a NoSQL database?",
+                "What is NoSQL in Python?",
+                "How do you use MongoDB with Python?",
+                "What does NoSQL mean in Python programming?",
+                "How is NoSQL different from SQL databases?"
+            ],
+            "answers": [
+                "NoSQL databases like MongoDB store data in a flexible, schema-less format such as JSON-like documents.",
+                "To use MongoDB with Python, you can use the pymongo library to connect, query, and manipulate the database."
+            ]
+        },
+        {
+            "intent": "data_science_libraries",
+            "questions": [
+                "What is NumPy used for in Python?",
+                "How do you use NumPy for data analysis?",
+                "What is Pandas in Python?",
+                "What is Matplotlib used for in Python?",
+                "How do you use Seaborn for data visualization?"
+            ],
+            "answers": [
+                "Popular data science libraries include NumPy for numerical computations, Pandas for data manipulation, and Matplotlib/Seaborn for data visualization.",
+                "NumPy provides arrays and mathematical functions, while Pandas is used for handling and analyzing structured data like tables."
+            ]
+        },
+        {
+            "intent": "machine_learning_libraries",
+            "questions": [
+                "What is scikit-learn in Python?",
+                "How do you use scikit-learn for machine learning?",
+                "What is TensorFlow in Python?",
+                "How is PyTorch used for machine learning?",
+                "What libraries are used for deep learning in Python?"
+            ],
+            "answers": [
+                "Scikit-learn is a library for classical machine learning models, while TensorFlow and PyTorch are used for deep learning.",
+                "Scikit-learn provides pre-built algorithms, while TensorFlow and PyTorch allow more flexibility for building custom neural networks."
+            ]
+        },
+        {
+            "intent": "networking_sockets",
+            "questions": [
+                "What is socket programming in Python?",
+                "How do you use sockets in Python?",
+                "How does Python handle sockets?",
+                "What is the socket module used for in Python?",
+                "How do you create a server using Python sockets?"
+            ],
+            "answers": [
+                "The socket module in Python provides low-level networking interfaces to create servers and clients.",
+                "A TCP server can be created by binding a socket to an IP address and port, listening for connections, and accepting them."
+            ]
+        },
+        {
+            "intent": "http_requests",
+            "questions": [
+                "What is an HTTP request?",
+                "How do you send an HTTP request in Python?",
+                "What is the requests module used for in Python?",
+                "How do you make GET and POST requests using Python?",
+                "What are the benefits of using the requests library in Python?"
+            ],
+            "answers": [
+                "The requests library in Python is used to send HTTP/HTTPS requests and handle responses easily.",
+                "You can send GET and POST requests using requests and parse the responses for further processing."
+            ]
+        },
+        {
+            "intent": "web_scraping",
+            "questions": [
+                "What is web scraping?",
+                "How do you scrape websites in Python?",
+                "What is BeautifulSoup used for in Python?",
+                "How does Scrapy help with web scraping in Python?",
+                "What is Selenium used for in Python?"
+            ],
+            "answers": [
+                "Web scraping is the process of extracting data from websites using automated tools.",
+                "BeautifulSoup is a library for parsing HTML, Scrapy is a framework for large-scale scraping, and Selenium automates browser interactions."
+            ]
+        },
+        {
+            "intent": "file_formats",
+            "questions": [
+                "How do you read and write CSV files in Python?",
+                "What is JSON in Python?",
+                "How do you handle JSON files using Python?",
+                "What libraries can be used for working with Excel files in Python?",
+                "How do you parse XML files in Python?"
+            ],
+            "answers": [
+                "CSV files can be handled using the csv module or Pandas, while JSON files can be read/written using the json module.",
+                "Excel files can be manipulated using libraries like openpyxl and Pandas."
+            ]
+        },
+        {
+            "intent": "gui_development",
+            "questions": [
+                "What is Tkinter in Python?",
+                "How do you create a GUI in Python?",
+                "What is the difference between PyQt and Tkinter?",
+                "How do you use PyQt for GUI development in Python?",
+                "What is Kivy used for in Python?"
+            ],
+            "answers": [
+                "Popular libraries for GUI development include Tkinter, PyQt, and Kivy.",
+                "Tkinter is built into Python, PyQt is more feature-rich, and Kivy is used for touch-based interfaces."
+            ]
+        },
+        {
+            "intent": "game_development",
+            "questions": [
+                "What is Pygame in Python?",
+                "How do you create a game in Python using Pygame?",
+                "What is the role of a game loop in Python?",
+                "How do you create a basic game using Pygame?",
+                "What are the key features of the Pygame library?"
+            ],
+            "answers": [
+                "Pygame is a library used for creating 2D games in Python by handling graphics, events, and sound.",
+                "A basic game loop involves continuously updating game logic and rendering frames until the game is exited."
+            ]
+        },
+        {
+            "intent": "history_features_python",
+            "questions": [
+                "What is the history of Python?",
+                "Who created Python?",
+                "What are the features of Python?",
+                "Why is Python so popular?",
+                "What makes Python unique?"
+            ],
+            "answers": [
+                "Python was created by Guido van Rossum in 1991. It is a high-level, interpreted programming language designed to emphasize code readability.",
+                "Features of Python include simplicity, readability, a large standard library, support for multiple paradigms (e.g., object-oriented, procedural), and platform independence.",
+                "Python is popular because of its ease of use, extensive libraries, and versatility for tasks such as web development, data science, artificial intelligence, and more."
+            ]
+        },
+        {
+            "intent": "installing_python",
+            "questions": [
+                "How can I install Python?",
+                "What are the steps to install Python on Windows?",
+                "How do I install Python on macOS?",
+                "How do I install Python on Linux?",
+                "How can I verify my Python installation?"
+            ],
+            "answers": [
+                "To install Python, visit the official Python website at https://www.python.org/ and download the appropriate installer for your operating system.",
+                "For Windows, download the installer, run it, and ensure you check 'Add Python to PATH' during installation.",
+                "On macOS, you can use Homebrew by running 'brew install python3', or download the installer from the Python website.",
+                "On Linux, you can use your package manager, e.g., 'sudo apt install python3' for Debian-based systems.",
+                "To verify the installation, open a terminal or command prompt and type 'python --version' or 'python3 --version'."
+            ]
+        },
+        {
+            "intent": "running_python_scripts",
+            "questions": [
+                "How do I run a Python script?",
+                "What is the command to run a Python file?",
+                "How can I execute Python code in the terminal?",
+                "What are different ways to run Python programs?",
+                "Can I run Python scripts in an IDE?"
+            ],
+            "answers": [
+                "To run a Python script, save your code in a file with the extension '.py' and execute it using the command 'python filename.py' in the terminal or command prompt.",
+                "You can also run Python scripts using an integrated development environment (IDE) like PyCharm, VS Code, or Jupyter Notebook.",
+                "Another way to run Python code is through an interactive shell by typing 'python' or 'python3' in your terminal, then entering your commands line by line."
+            ]
+        },
+        {
+            "intent": "indentation",
+            "questions": [
+                "What is indentation in Python?",
+                "Why is indentation important in Python?",
+                "Can you give an example of Python indentation?"
+            ],
+            "answers": [
+                "Indentation in Python refers to the use of whitespace to define the structure of the code, such as blocks of code under loops, functions, and conditionals.",
+                "Indentation is critical in Python because it determines the code's hierarchy and logic. Without proper indentation, Python will throw an error.",
+                "Example:\n```python\nif True:\n    print(\"This is indented correctly\")\nelse:\n    print(\"Fix indentation errors for proper execution\")\n```"
+            ]
+        },
+        {
+            "intent": "comments",
+            "questions": [
+                "What are comments in Python?",
+                "How do you write a comment in Python?",
+                "Can you give examples of comments in Python?"
+            ],
+            "answers": [
+                "Comments in Python are lines of text ignored by the interpreter. They are used to explain code or make it more readable.",
+                "Single-line comments are written using the `#` symbol, and multi-line comments can be written using triple quotes.",
+                "Examples:\n```python\n# This is a single-line comment\n\"\"\"\nThis is a\nmulti-line comment\n\"\"\"\n```"
+            ]
+        },
+        {
+            "intent": "variables_and_constants",
+            "questions": [
+                "What are variables and constants in Python?",
+                "How do you declare a variable in Python?",
+                "Can you give an example of using variables and constants?"
+            ],
+            "answers": [
+                "Variables in Python are named memory locations used to store data that can be modified. Constants are fixed values that should not change during program execution (usually indicated by naming conventions).",
+                "Example of a variable:\n```python\nx = 10  # x is a variable\n```\nExample of a constant:\n```python\nPI = 3.14  # Constants are typically written in uppercase\n```",
+                "Usage example:\n```python\nx = 5\nPI = 3.14\nprint(\"Value of x:\", x)\nprint(\"Value of constant PI:\", PI)\n```"
+            ]
+        },
+        {
+            "intent": "input_and_output",
+            "questions": [
+                "What is input and output in Python?",
+                "How do you take input from a user in Python?",
+                "How do you display output in Python?",
+                "Can you give examples of input and output in Python?"
+            ],
+            "answers": [
+                "Input in Python refers to taking user data during program execution using the `input()` function. Output is displaying information to the user using the `print()` function.",
+                "Example of taking input:\n```python\nname = input(\"Enter your name: \")\n```\nExample of displaying output:\n```python\nprint(\"Hello, \" + name)\n```",
+                "Usage example:\n```python\n# Taking input from the user\nname = input(\"What is your name? \")\nage = int(input(\"Enter your age: \"))\n\n# Displaying output\nprint(\"Name:\", name)\nprint(\"Age:\", age)\n```"
+            ]
+        },
+        {
+            "intent": "numeric_data_types",
+            "questions": [
+                "What are numeric data types in Python?",
+                "Can you explain int, float, and complex in Python?",
+                "What is a complex number in Python?"
+            ],
+            "answers": [
+                "Python has three numeric data types: int, float, and complex.",
+                "An int is a whole number, a float is a number with a decimal point, and a complex number has a real and an imaginary part.",
+                "Examples of numeric data types:\n```python\n# Integer\na = 10\nprint(type(a))  # Output: <class 'int'>\n\n# Float\nb = 10.5\nprint(type(b))  # Output: <class 'float'>\n\n# Complex\nc = 3 + 4j\nprint(type(c))  # Output: <class 'complex'>\n```"
+            ]
+        },
+        {
+            "intent": "string_data_types",
+            "questions": [
+                "What are strings in Python?",
+                "How do you define a string in Python?",
+                "Can you give examples of string operations in Python?"
+            ],
+            "answers": [
+                "A string in Python is a sequence of characters enclosed in single, double, or triple quotes.",
+                "You can define a string as follows:\n```python\n# Single quotes\nstr1 = 'Hello'\n\n# Double quotes\nstr2 = \"Hello\"\n\n# Triple quotes for multi-line strings\nstr3 = '''Hello\nWorld'''\n```",
+                "Examples of string operations:\n```python\n# Concatenation\nstr1 = 'Hello'\nstr2 = 'World'\nresult = str1 + ' ' + str2\nprint(result)  # Output: Hello World\n\n# Accessing characters\nprint(str1[0])  # Output: H\n\n# Length of a string\nprint(len(str1))  # Output: 5\n```"
+            ]
+        },
+        {
+            "intent": "boolean_data_types",
+            "questions": [
+                "What is a Boolean in Python?",
+                "What are the Boolean values in Python?",
+                "Can you give examples of Boolean operations in Python?"
+            ],
+            "answers": [
+                "A Boolean in Python represents one of two values: True or False.",
+                "Boolean values are often used in comparisons and logical operations.",
+                "Examples of Boolean operations:\n```python\n# Boolean values\na = True\nb = False\n\n# Logical operations\nprint(a and b)  # Output: False\nprint(a or b)   # Output: True\nprint(not a)    # Output: False\n```"
+            ]
+        },
+        {
+            "intent": "none_data_type",
+            "questions": [
+                "What is None in Python?",
+                "When do you use None in Python?",
+                "Can you give an example of using None in Python?"
+            ],
+            "answers": [
+                "None is a special data type in Python representing the absence of a value or a null value.",
+                "You can use None to initialize variables or indicate that a variable has no value.",
+                "Example of using None:\n```python\n# Initializing a variable with None\nvalue = None\n\n# Checking if a variable is None\nif value is None:\n    print('No value assigned yet')\n\n# Assigning a value\nvalue = 42\nprint(value)  # Output: 42\n```"
+            ]
+        },
+        {
+            "intent": "arithmetic_operators",
+            "questions": [
+                "What are arithmetic operators in Python?",
+                "Can you explain arithmetic operations in Python?",
+                "What is the syntax for arithmetic operators in Python?"
+            ],
+            "answers": [
+                "Arithmetic operators in Python are used to perform basic mathematical operations such as addition, subtraction, multiplication, division, and more.",
+                "Examples of arithmetic operators:\n```python\n# Addition\na = 10\nb = 5\nprint(a + b)  # Output: 15\n\n# Subtraction\nprint(a - b)  # Output: 5\n\n# Multiplication\nprint(a * b)  # Output: 50\n\n# Division\nprint(a / b)  # Output: 2.0\n\n# Modulus\nprint(a % b)  # Output: 0\n\n# Exponentiation\nprint(a ** b)  # Output: 100000\n```"
+            ]
+        },
+        {
+            "intent": "comparison_operators",
+            "questions": [
+                "What are comparison operators in Python?",
+                "How do comparison operators work in Python?",
+                "Can you give examples of comparison operators in Python?"
+            ],
+            "answers": [
+                "Comparison operators are used to compare two values and return a Boolean result (True or False).",
+                "Examples of comparison operators:\n```python\n# Greater than\na = 10\nb = 5\nprint(a > b)  # Output: True\n\n# Less than\nprint(a < b)  # Output: False\n\n# Equal to\nprint(a == b)  # Output: False\n\n# Not equal to\nprint(a != b)  # Output: True\n\n# Greater than or equal to\nprint(a >= b)  # Output: True\n\n# Less than or equal to\nprint(a <= b)  # Output: False\n```"
+            ]
+        },
+        {
+            "intent": "logical_operators",
+            "questions": [
+                "What are logical operators in Python?",
+                "How do logical operators work in Python?",
+                "Can you provide examples of logical operators?"
+            ],
+            "answers": [
+                "Logical operators are used to combine conditional statements and return a Boolean result.",
+                "Examples of logical operators:\n```python\na = True\nb = False\n\n# AND\nprint(a and b)  # Output: False\n\n# OR\nprint(a or b)  # Output: True\n\n# NOT\nprint(not a)  # Output: False\n```"
+            ]
+        },
+        {
+            "intent": "assignment_operators",
+            "questions": [
+                "What are assignment operators in Python?",
+                "How do assignment operators work in Python?",
+                "Can you give examples of assignment operators in Python?"
+            ],
+            "answers": [
+                "Assignment operators are used to assign values to variables, often with arithmetic or bitwise operations.",
+                "Examples of assignment operators:\n```python\na = 10  # Assign value\n\n# Add and assign\na += 5  # Equivalent to a = a + 5\nprint(a)  # Output: 15\n\n# Subtract and assign\na -= 3  # Equivalent to a = a - 3\nprint(a)  # Output: 12\n\n# Multiply and assign\na *= 2  # Equivalent to a = a * 2\nprint(a)  # Output: 24\n\n# Divide and assign\na /= 4  # Equivalent to a = a / 4\nprint(a)  # Output: 6.0\n```"
+            ]
+        },
+        {
+            "intent": "bitwise_operators",
+            "questions": [
+                "What are bitwise operators in Python?",
+                "How do bitwise operators work in Python?",
+                "Can you give examples of bitwise operators?"
+            ],
+            "answers": [
+                "Bitwise operators are used to perform operations on binary representations of integers.",
+                "Examples of bitwise operators:\n```python\na = 5  # Binary: 0101\nb = 3  # Binary: 0011\n\n# AND\nprint(a & b)  # Output: 1 (Binary: 0001)\n\n# OR\nprint(a | b)  # Output: 7 (Binary: 0111)\n\n# XOR\nprint(a ^ b)  # Output: 6 (Binary: 0110)\n\n# Left shift\nprint(a << 1)  # Output: 10 (Binary: 1010)\n\n# Right shift\nprint(a >> 1)  # Output: 2 (Binary: 0010)\n```"
+            ]
+        },
+        {
+            "intent": "membership_and_identity_operators",
+            "questions": [
+                "What are membership operators in Python?",
+                "What are identity operators in Python?",
+                "Can you provide examples of membership and identity operators?"
+            ],
+            "answers": [
+                "Membership operators check if a value is part of a sequence (e.g., list, string). Identity operators check if two variables refer to the same object in memory.",
+                "Examples of membership operators:\n```python\n# Membership\nmy_list = [1, 2, 3]\nprint(2 in my_list)  # Output: True\nprint(4 not in my_list)  # Output: True\n```",
+                "Examples of identity operators:\n```python\n# Identity\na = [1, 2, 3]\nb = a\nc = [1, 2, 3]\n\nprint(a is b)  # Output: True\nprint(a is c)  # Output: False\nprint(a == c)  # Output: True\n```"
+            ]
+        },
+        {
+            "intent": "if_statement",
+            "questions": [
+                "What is an if statement in Python?",
+                "How does an if statement work?",
+                "Can you provide an example of an if statement?"
+            ],
+            "answers": [
+                "An `if` statement in Python is used to execute a block of code if a specified condition is true.",
+                "When the condition in an `if` statement evaluates to true, the code inside the `if` block is executed. If the condition is false, the code block is skipped.",
+                "Example:\n```python\nx = 10\nif x > 5:\n    print('x is greater than 5')  # Output: x is greater than 5\n```"
+            ]
+        },
+        {
+            "intent": "else_statement",
+            "questions": [
+                "What is the else statement in Python?",
+                "How does the else statement work?",
+                "Can you show an example of an else statement?"
+            ],
+            "answers": [
+                "An `else` statement in Python is used to execute a block of code if the condition in the corresponding `if` statement is false.",
+                "The code inside the `else` block is executed only if the `if` condition is false.",
+                "Example:\n```python\nx = 3\nif x > 5:\n    print('x is greater than 5')\nelse:\n    print('x is not greater than 5')  # Output: x is not greater than 5\n```"
+            ]
+        },
+        {
+            "intent": "elif_statement",
+            "questions": [
+                "What is the elif statement in Python?",
+                "How do elif statements work?",
+                "Can you provide an example of an elif statement?"
+            ],
+            "answers": [
+                "`elif` (short for 'else if') is used in Python to check multiple conditions. It allows you to check more than one condition if the initial `if` condition is false.",
+                "The `elif` statement allows you to test multiple conditions and execute a block of code if a specific condition is true.",
+                "Example:\n```python\nx = 5\nif x > 10:\n    print('x is greater than 10')\nelif x == 5:\n    print('x is 5')  # Output: x is 5\nelse:\n    print('x is less than 5')\n```"
+            ]
+        },
+        {
+            "intent": "for_loop",
+            "questions": [
+                "What is a for loop in Python?",
+                "How do you use a for loop in Python?",
+                "Can you show an example of a for loop?"
+            ],
+            "answers": [
+                "A `for` loop in Python is used to iterate over a sequence (like a list, tuple, or string) and execute a block of code for each element in the sequence.",
+                "In a `for` loop, the loop variable takes the value of each element in the sequence one by one, and the code inside the loop executes for each value.",
+                "Example:\n```python\nfor i in range(3):\n    print(i)  # Output: 0 1 2\n```"
+            ]
+        },
+        {
+            "intent": "while_loop",
+            "questions": [
+                "What is a while loop in Python?",
+                "How do you use a while loop?",
+                "Can you provide an example of a while loop?"
+            ],
+            "answers": [
+                "A `while` loop in Python repeatedly executes a block of code as long as a given condition is true.",
+                "The condition is evaluated before each iteration, and if it is true, the loop executes the block of code. If it becomes false, the loop stops.",
+                "Example:\n```python\nx = 0\nwhile x < 3:\n    print(x)\n    x += 1  # Output: 0 1 2\n```"
+            ]
+        },
+        {
+            "intent": "break_statement",
+            "questions": [
+                "What does the break statement do in Python?",
+                "How is the break statement used in loops?",
+                "Can you give an example of using break in a loop?"
+            ],
+            "answers": [
+                "The `break` statement is used to exit a loop prematurely. When executed, it stops the loop and continues with the next statement outside the loop.",
+                "The `break` statement is typically used to exit the loop when a certain condition is met, even if the loop would normally continue.",
+                "Example:\n```python\nfor i in range(5):\n    if i == 3:\n        break\n    print(i)  # Output: 0 1 2\n```"
+            ]
+        },
+        {
+            "intent": "continue_statement",
+            "questions": [
+                "What does the continue statement do in Python?",
+                "How is the continue statement used in loops?",
+                "Can you show an example of using continue in a loop?"
+            ],
+            "answers": [
+                "The `continue` statement is used to skip the current iteration of a loop and proceed to the next iteration.",
+                "When the `continue` statement is encountered, the rest of the code in the loop is skipped for the current iteration, and the loop moves to the next one.",
+                "Example:\n```python\nfor i in range(5):\n    if i == 3:\n        continue\n    print(i)  # Output: 0 1 2 4\n```"
+            ]
+        },
+        {
+            "intent": "pass_statement",
+            "questions": [
+                "What does the pass statement do in Python?",
+                "How is the pass statement used?",
+                "Can you show an example of the pass statement?"
+            ],
+            "answers": [
+                "The `pass` statement in Python is a placeholder. It does nothing when executed but is used where a statement is syntactically required.",
+                "The `pass` statement is often used in function or loop definitions where code is required but you want to leave the block empty for now.",
+                "Example:\n```python\ndef empty_function():\n    pass  # No action performed\n```"
+            ]
+        },
+        {
+            "intent": "defining_and_calling_functions",
+            "questions": [
+                "How do you define a function in Python?",
+                "How do you call a function in Python?",
+                "Can you give an example of defining and calling a function?"
+            ],
+            "answers": [
+                "In Python, a function is defined using the `def` keyword, followed by the function name and parentheses containing any parameters. The body of the function follows, indented.",
+                "A function is called by using its name followed by parentheses. If the function takes parameters, you can pass arguments inside the parentheses when calling it.",
+                "Example:\n```python\ndef greet(name):\n    print(f'Hello, {name}')\n\ngreet('Alice')  # Output: Hello, Alice\n```"
+            ]
+        },
+        {
+            "intent": "function_arguments_and_return_values",
+            "questions": [
+                "What are function arguments in Python?",
+                "What is a return value in a Python function?",
+                "Can you provide an example of a function with arguments and a return value?"
+            ],
+            "answers": [
+                "Function arguments are values passed into a function when it is called. These values can be used within the function to perform operations or calculations.",
+                "A return value is the result of the function's execution, sent back to the caller using the `return` keyword. This allows the function to provide a result.",
+                "Example:\n```python\ndef add(a, b):\n    return a + b\n\nresult = add(3, 5)\nprint(result)  # Output: 8\n```"
+            ]
+        },
+        {
+            "intent": "default_arguments",
+            "questions": [
+                "What are default arguments in Python functions?",
+                "How do you set default values for function arguments?",
+                "Can you show an example of a function with default arguments?"
+            ],
+            "answers": [
+                "Default arguments are values that are assigned to function parameters if no value is provided when the function is called. They are specified by assigning a value in the function definition.",
+                "You can set default argument values by providing an initial value in the function definition. If no argument is passed for that parameter, the default value is used.",
+                "Example:\n```python\ndef greet(name='Guest'):\n    print(f'Hello, {name}')\n\ngreet()  # Output: Hello, Guest\ngreet('Alice')  # Output: Hello, Alice\n```"
+            ]
+        },
+        {
+            "intent": "keyword_arguments",
+            "questions": [
+                "What are keyword arguments in Python?",
+                "How do you pass keyword arguments to a function?",
+                "Can you show an example of using keyword arguments in a function?"
+            ],
+            "answers": [
+                "Keyword arguments are arguments passed to a function by explicitly specifying the name of the parameter and its corresponding value.",
+                "You can pass keyword arguments by specifying the parameter names in the function call, which allows you to pass arguments in any order.",
+                "Example:\n```python\ndef greet(name, age):\n    print(f'Hello, {name}. You are {age} years old.')\n\ngreet(age=25, name='Alice')  # Output: Hello, Alice. You are 25 years old.\n```"
+            ]
+        },
+        {
+            "intent": "args_and_kwargs",
+            "questions": [
+                "What are *args and **kwargs in Python?",
+                "How do you use *args and **kwargs in functions?",
+                "Can you give an example of using *args and **kwargs?"
+            ],
+            "answers": [
+                "`*args` is used to pass a variable number of positional arguments to a function. It collects extra positional arguments into a tuple.",
+                "`**kwargs` is used to pass a variable number of keyword arguments to a function. It collects extra keyword arguments into a dictionary.",
+                "Example with `*args`:\n```python\ndef add_numbers(*args):\n    return sum(args)\n\nresult = add_numbers(1, 2, 3, 4)\nprint(result)  # Output: 10\n```",
+                "Example with `**kwargs`:\n```python\ndef print_info(**kwargs):\n    for key, value in kwargs.items():\n        print(f'{key}: {value}')\n\nprint_info(name='Alice', age=25)  # Output: name: Alice\nage: 25\n```"
+            ]
+        },
+        {
+            "intent": "combined_args_and_kwargs",
+            "questions": [
+                "Can you use *args and **kwargs together in a function?",
+                "What is the correct way to combine *args and **kwargs in a function?",
+                "Can you provide an example of using both *args and **kwargs together?"
+            ],
+            "answers": [
+                "Yes, you can use both `*args` and `**kwargs` in the same function. `*args` collects positional arguments, while `**kwargs` collects keyword arguments.",
+                "When using both, `*args` must come before `**kwargs` in the function definition. This ensures that positional arguments are handled first and keyword arguments are handled second.",
+                "Example:\n```python\ndef greet_person(*args, **kwargs):\n    print(f'Hello, {args[0]}')\n    for key, value in kwargs.items():\n        print(f'{key}: {value}')\n\ngreet_person('Alice', age=25, city='New York')\n# Output: Hello, Alice\n# age: 25\n# city: New York\n```"
+            ]
+        },
+        {
+            "intent": "return_statement_in_functions",
+            "questions": [
+                "What is the return statement in Python functions?",
+                "How do you use the return statement in a function?",
+                "Can you give an example of a function with a return statement?"
+            ],
+            "answers": [
+                "The `return` statement is used to send a result from a function back to the caller. It can return a single value or multiple values (as a tuple).",
+                "When the `return` statement is encountered, the function stops execution and returns the specified value to the caller.",
+                "Example:\n```python\ndef square(x):\n    return x * x\n\nresult = square(5)\nprint(result)  # Output: 25\n```"
+            ]
+        },
+        {
+            "intent": "lists",
+            "questions": [
+                "What is a list in Python?",
+                "How do you create a list in Python?",
+                "Can you provide an example of a list in Python?"
+            ],
+            "answers": [
+                "A list in Python is a collection of ordered, mutable elements that can contain different data types.",
+                "A list can be created by placing comma-separated values inside square brackets `[]`.",
+                "Example:\n```python\nmy_list = [1, 2, 3, 'hello', True]\nprint(my_list)  # Output: [1, 2, 3, 'hello', True]\n```"
+            ]
+        },
+        {
+            "intent": "tuples",
+            "questions": [
+                "What is a tuple in Python?",
+                "How do you create a tuple in Python?",
+                "Can you provide an example of a tuple in Python?"
+            ],
+            "answers": [
+                "A tuple in Python is a collection of ordered, immutable elements. Once created, the elements in a tuple cannot be changed.",
+                "A tuple can be created by placing comma-separated values inside parentheses `()`.",
+                "Example:\n```python\nmy_tuple = (1, 2, 3, 'hello', True)\nprint(my_tuple)  # Output: (1, 2, 3, 'hello', True)\n```"
+            ]
+        },
+        {
+            "intent": "sets",
+            "questions": [
+                "What is a set in Python?",
+                "How do you create a set in Python?",
+                "Can you provide an example of a set in Python?"
+            ],
+            "answers": [
+                "A set in Python is an unordered collection of unique elements. Sets do not allow duplicates and do not maintain order.",
+                "A set can be created by placing comma-separated values inside curly braces `{}` or by using the `set()` constructor.",
+                "Example:\n```python\nmy_set = {1, 2, 3, 'hello', True}\nprint(my_set)  # Output: {1, 2, 3, 'hello', True}\n```"
+            ]
+        },
+        {
+            "intent": "dictionaries",
+            "questions": [
+                "What is a dictionary in Python?",
+                "How do you create a dictionary in Python?",
+                "Can you provide an example of a dictionary in Python?"
+            ],
+            "answers": [
+                "A dictionary in Python is an unordered collection of key-value pairs. Keys are unique, and each key maps to a corresponding value.",
+                "A dictionary can be created by placing key-value pairs inside curly braces `{}` with a colon `:` separating the key and value.",
+                "Example:\n```python\nmy_dict = {'name': 'Alice', 'age': 25, 'is_student': True}\nprint(my_dict)  # Output: {'name': 'Alice', 'age': 25, 'is_student': True}\n```"
+            ]
+        },
+        {
+            "intent": "list_comprehension",
+            "questions": [
+                "What is list comprehension in Python?",
+                "How do you use list comprehension in Python?",
+                "Can you provide an example of list comprehension in Python?"
+            ],
+            "answers": [
+                "List comprehension is a concise way to create lists in Python. It allows you to apply an expression to each item in an iterable and filter elements based on a condition.",
+                "List comprehension is written as `[expression for item in iterable if condition]`.",
+                "Example:\n```python\nmy_list = [x**2 for x in range(5)]\nprint(my_list)  # Output: [0, 1, 4, 9, 16]\n```"
+            ]
+        },
+        {
+            "intent": "dictionary_comprehension",
+            "questions": [
+                "What is dictionary comprehension in Python?",
+                "How do you use dictionary comprehension in Python?",
+                "Can you provide an example of dictionary comprehension in Python?"
+            ],
+            "answers": [
+                "Dictionary comprehension is a concise way to create dictionaries in Python. It allows you to apply an expression to each item in an iterable and generate key-value pairs based on a condition.",
+                "Dictionary comprehension is written as `{key_expression: value_expression for item in iterable if condition}`.",
+                "Example:\n```python\nmy_dict = {x: x**2 for x in range(5)}\nprint(my_dict)  # Output: {0: 0, 1: 1, 2: 4, 3: 9, 4: 16}\n```"
+            ]
+        },
+        {
+            "intent": "string_methods",
+            "questions": [
+                "What are some common string methods in Python?",
+                "Can you list some string methods in Python?",
+                "How do you use string methods in Python?"
+            ],
+            "answers": [
+                "Python provides several built-in methods to manipulate strings. Some common methods include `lower()`, `upper()`, `strip()`, `replace()`, `find()`, and `split()`.",
+                "Example methods:\n- `lower()`: Converts the string to lowercase.\n- `upper()`: Converts the string to uppercase.\n- `strip()`: Removes leading and trailing whitespace.\n- `replace()`: Replaces a substring with another substring.\n- `find()`: Returns the index of the first occurrence of a substring.\n- `split()`: Splits the string into a list based on a delimiter.",
+                "Example:\n```python\ntext = '   Hello World!   '\nprint(text.strip())  # Output: 'Hello World!'\nprint(text.upper())  # Output: 'HELLO WORLD!'\nprint(text.replace('World', 'Python'))  # Output: '   Hello Python!   '\n```"
+            ]
+        },
+        {
+            "intent": "string_formatting",
+            "questions": [
+                "What is string formatting in Python?",
+                "How do you format strings using f-strings in Python?",
+                "What is the difference between `f-strings`, `.format()`, and `%` formatting in Python?"
+            ],
+            "answers": [
+                "String formatting in Python allows you to embed variables or expressions inside a string. You can use different methods: `f-strings`, `.format()`, and `%`.",
+                "F-strings (formatted string literals) are a concise and efficient way to format strings. They are written with an `f` before the string and curly braces `{}` to include expressions or variables.",
+                "Example of `f-strings`:\n```python\nname = 'Alice'\nage = 25\nprint(f'Hello, {name}. You are {age} years old.')  # Output: Hello, Alice. You are 25 years old.\n```",
+                "Example of `.format()` method:\n```python\nname = 'Alice'\nage = 25\nprint('Hello, {}. You are {} years old.'.format(name, age))  # Output: Hello, Alice. You are 25 years old.\n```",
+                "Example of `%` formatting:\n```python\nname = 'Alice'\nage = 25\nprint('Hello, %s. You are %d years old.' % (name, age))  # Output: Hello, Alice. You are 25 years old.\n```"
+            ]
+        },
+        {
+            "intent": "regular_expressions",
+            "questions": [
+                "What are regular expressions in Python?",
+                "How do you use the `re` module in Python?",
+                "Can you provide an example of using regular expressions in Python?"
+            ],
+            "answers": [
+                "Regular expressions (regex) are a powerful tool for matching and manipulating text in Python. The `re` module provides functions for working with regex patterns.",
+                "You can use the `re` module to search, match, and replace text. Common functions include `re.match()`, `re.search()`, `re.findall()`, and `re.sub()`.",
+                "Example of using `re.search()` to find a match in a string:\n```python\nimport re\npattern = r'\\d{3}'  # Matches 3 digits\ntext = 'My number is 1234'\nresult = re.search(pattern, text)\nif result:\n    print(result.group())  # Output: 123\n```",
+                "Example of using `re.sub()` to replace text in a string:\n```python\nimport re\npattern = r'world'\ntext = 'Hello world!'\nnew_text = re.sub(pattern, 'Python', text)\nprint(new_text)  # Output: Hello Python!\n```"
+            ]
+        },
+        {
+            "intent": "importing_modules",
+            "questions": [
+                "How do you import a module in Python?",
+                "Can you show an example of importing a module in Python?",
+                "What are different ways to import modules in Python?"
+            ],
+            "answers": [
+                "In Python, you can import a module using the `import` keyword, followed by the module name. You can also import specific functions or variables from a module using `from`.",
+                "Example of importing a module:\n```python\nimport math\nprint(math.sqrt(16))  # Output: 4.0\n```",
+                "Example of importing specific functions:\n```python\nfrom math import sqrt\nprint(sqrt(16))  # Output: 4.0\n```",
+                "You can also give a module or function an alias using `as`:\n```python\nimport math as m\nprint(m.sqrt(16))  # Output: 4.0\n```"
+            ]
+        },
+        {
+            "intent": "standard_library_modules",
+            "questions": [
+                "What is the `math` module in Python?",
+                "Can you provide an example of using the `datetime` module?",
+                "How do you use the `random` module in Python?"
+            ],
+            "answers": [
+                "The `math` module in Python provides mathematical functions and constants. You can use it for operations like square roots, trigonometry, logarithms, etc.",
+                "Example of using the `math` module:\n```python\nimport math\nprint(math.pi)  # Output: 3.141592653589793\nprint(math.sqrt(16))  # Output: 4.0\n```",
+                "The `datetime` module provides classes for manipulating dates and times. You can use it to work with current time, formatting, and date calculations.",
+                "Example of using the `datetime` module:\n```python\nimport datetime\ncurrent_time = datetime.datetime.now()\nprint(current_time)  # Output: 2024-12-11 14:45:00.123456\n```",
+                "The `random` module allows you to generate random numbers and select random items from a sequence.",
+                "Example of using the `random` module:\n```python\nimport random\nprint(random.randint(1, 10))  # Output: A random integer between 1 and 10\nprint(random.choice(['apple', 'banana', 'cherry']))  # Output: Random item from the list\n```"
+            ]
+        },
+        {
+            "intent": "creating_custom_modules_and_packages",
+            "questions": [
+                "How do you create a custom module in Python?",
+                "Can you show an example of creating a custom Python module?",
+                "What is the difference between a module and a package in Python?"
+            ],
+            "answers": [
+                "A custom module in Python is a file containing Python definitions and statements. You can create one by writing functions or variables in a `.py` file and importing it into other Python scripts.",
+                "Example of creating a custom module:\n1. Create a file `mymodule.py` with the following content:\n```python\ndef greet(name):\n    return f'Hello, {name}!'\n```",
+                "2. In another Python script, import and use your module:\n```python\nimport mymodule\nprint(mymodule.greet('Alice'))  # Output: Hello, Alice!\n```",
+                "A Python package is a collection of modules in a directory, which can contain subdirectories and other files. A package must have an `__init__.py` file to be recognized as a package.",
+                "Example of creating a custom package:\n1. Create a directory `my_package/` with the following structure:\n```bash\nmy_package/\n    __init__.py\n    module1.py\n    module2.py\n```",
+                "2. In the `module1.py` and `module2.py`, you can define functions, and then import them like this:\n```python\nfrom my_package.module1 import function1\n```"
+            ]
+        },
+        {
+            "intent": "reading_and_writing_files",
+            "questions": [
+                "How do you read a file in Python?",
+                "How do you write to a file in Python?",
+                "Can you show an example of reading and writing a file in Python?"
+            ],
+            "answers": [
+                "In Python, you can open a file using the `open()` function. Use the `'r'` mode to read and `'w'` mode to write.",
+                "Example of reading a file:\n```python\nwith open('example.txt', 'r') as file:\n    content = file.read()\n    print(content)\n```",
+                "Example of writing to a file:\n```python\nwith open('example.txt', 'w') as file:\n    file.write('Hello, world!')\n```",
+                "The `with` statement is used to automatically close the file after the operation is done."
+            ]
+        },
+        {
+            "intent": "working_with_csv_files",
+            "questions": [
+                "How do you read a CSV file in Python?",
+                "How do you write to a CSV file in Python?",
+                "Can you provide an example of reading and writing CSV files in Python?"
+            ],
+            "answers": [
+                "In Python, you can use the `csv` module to read and write CSV files. Use `csv.reader()` to read and `csv.writer()` to write.",
+                "Example of reading a CSV file:\n```python\nimport csv\nwith open('data.csv', 'r') as file:\n    reader = csv.reader(file)\n    for row in reader:\n        print(row)\n```",
+                "Example of writing to a CSV file:\n```python\nimport csv\nwith open('data.csv', 'w', newline='') as file:\n    writer = csv.writer(file)\n    writer.writerow(['Name', 'Age', 'City'])\n    writer.writerow(['Alice', 25, 'New York'])\n```"
+            ]
+        },
+        {
+            "intent": "working_with_json_files",
+            "questions": [
+                "How do you read a JSON file in Python?",
+                "How do you write to a JSON file in Python?",
+                "Can you provide an example of reading and writing JSON files in Python?"
+            ],
+            "answers": [
+                "In Python, you can use the `json` module to read and write JSON files. Use `json.load()` to read and `json.dump()` to write.",
+                "Example of reading a JSON file:\n```python\nimport json\nwith open('data.json', 'r') as file:\n    data = json.load(file)\n    print(data)\n```",
+                "Example of writing to a JSON file:\n```python\nimport json\ndata = {'name': 'Alice', 'age': 25, 'city': 'New York'}\nwith open('data.json', 'w') as file:\n    json.dump(data, file)\n```"
+            ]
+        },
+        {
+            "intent": "file_modes",
+            "questions": [
+                "What are the different file modes in Python?",
+                "What is the difference between 'r', 'w', 'a', and 'rb' file modes?",
+                "Can you explain file modes in Python?"
+            ],
+            "answers": [
+                "In Python, the `open()` function accepts different file modes that define how the file is accessed.",
+                "Common file modes include:\n- `'r'`: Read mode (default), opens the file for reading.\n- `'w'`: Write mode, opens the file for writing (creates the file if it doesn't exist).\n- `'a'`: Append mode, opens the file for appending.\n- `'rb'`: Read mode in binary format.",
+                "Example of using file modes:\n```python\nwith open('example.txt', 'w') as file:\n    file.write('Hello, world!')\nwith open('example.txt', 'r') as file:\n    content = file.read()\n    print(content)  # Output: Hello, world!\n```"
+            ]
+        },
+        {
+            "intent": "error_and_exception_handling",
+            "questions": [
+                "What are try, except, else, and finally blocks in Python?",
+                "How do try, except, else, and finally work together in error handling?"
+            ],
+            "answers": [
+                "The 'try' block tests code for errors, the 'except' block handles errors, 'else' runs if no errors occur, and 'finally' always executes, regardless of errors.",
+                "The 'try' block allows you to test code for exceptions, 'except' blocks catch those exceptions, 'else' is executed if no exception occurs, and 'finally' runs code that must execute no matter what.",
+                "These blocks are used to manage errors gracefully, ensuring your program continues to run smoothly even when unexpected issues arise."
+            ]
+        },
+        {
+            "intent": "error_and_exception_handling",
+            "questions": [
+                "How do you raise an exception in Python?",
+                "What is the syntax for raising an exception in Python?"
+            ],
+            "answers": [
+                "You can raise an exception in Python using the 'raise' keyword followed by an exception class. For example, raise ValueError('Invalid value').",
+                "The 'raise' statement is used to trigger exceptions explicitly in your code, which can be useful for custom error handling.",
+                "Raising exceptions allows you to enforce certain conditions in your code, ensuring that issues are caught and handled properly."
+            ]
+        },
+        {
+            "intent": "error_and_exception_handling",
+            "questions": [
+                "What are custom exceptions in Python?",
+                "How can you create and use custom exceptions in Python?"
+            ],
+            "answers": [
+                "Custom exceptions in Python are user-defined exceptions that extend the base Exception class.",
+                "To create a custom exception, define a new class that inherits from Exception, and you can use it like any other exception.",
+                "Custom exceptions allow you to handle specific error scenarios in a way that is more meaningful to your application."
+            ]
+        },
+        {
+            "intent": "object_oriented_programming",
+            "questions": [
+                "What are classes and objects in Python?",
+                "How do classes and objects work in Python?"
+            ],
+            "answers": [
+                "A class is a blueprint for creating objects, and an object is an instance of a class.",
+                "Classes define the structure and behavior of objects, and objects hold specific data and can invoke class methods.",
+                "In Python, a class is defined using the 'class' keyword, and objects are instantiated by calling the class as a function."
+            ]
+        },
+        {
+            "intent": "object_oriented_programming",
+            "questions": [
+                "What is inheritance in Python?",
+                "How does inheritance work in Python?"
+            ],
+            "answers": [
+                "Inheritance allows a class to inherit attributes and methods from another class, enabling code reuse.",
+                "A subclass can inherit from a parent class and extend or modify its behavior.",
+                "Inheritance makes it possible to organize and structure code more efficiently by sharing common functionality."
+            ]
+        },
+        {
+            "intent": "object_oriented_programming",
+            "questions": [
+                "What is polymorphism in Python?",
+                "How does polymorphism work in Python?"
+            ],
+            "answers": [
+                "Polymorphism allows methods to have different behaviors depending on the object calling them.",
+                "Polymorphism enables the same method to be used for different object types, leading to more flexible code.",
+                "It allows functions to accept arguments of different types and execute differently based on the type of input."
+            ]
+        },
+        {
+            "intent": "object_oriented_programming",
+            "questions": [
+                "What is encapsulation in Python?",
+                "How does encapsulation help in Python?"
+            ],
+            "answers": [
+                "Encapsulation is the concept of bundling data and methods within a class and restricting access to some of the object's components.",
+                "In Python, encapsulation is implemented by making variables and methods private or protected, using a single or double underscore prefix.",
+                "Encapsulation helps in hiding the internal state of an object and only exposing necessary functionality."
+            ]
+        },
+        {
+            "intent": "object_oriented_programming",
+            "questions": [
+                "What are special methods like `__init__`, `__str__` in Python?",
+                "How do special methods like `__init__` and `__str__` work in Python?"
+            ],
+            "answers": [
+                "The '__init__' method is a constructor that initializes a new object, while '__str__' defines how the object is represented as a string.",
+                "Special methods are used for custom behavior like object creation, string representation, and operator overloading.",
+                "The '__init__' method is called when an object is created, and '__str__' is called when the string representation of an object is needed."
+            ]
+        },
+        {
+            "intent": "iterators_and_generators",
+            "questions": [
+                "What are the `__iter__` and `__next__` methods in Python?",
+                "How do the `__iter__` and `__next__` methods work together in Python?"
+            ],
+            "answers": [
+                "The '__iter__' method is used to initialize an iterator, and '__next__' retrieves the next item in the sequence.",
+                "The '__iter__' method returns the iterator object itself, and '__next__' is used to fetch the next value from the iterator.",
+                "These methods are fundamental to making an object iterable, and they are part of the iterator protocol in Python."
+            ]
+        },
+        {
+            "intent": "iterators_and_generators",
+            "questions": [
+                "How does the `yield` keyword work in Python?",
+                "What does the `yield` keyword do in Python?"
+            ],
+            "answers": [
+                "The 'yield' keyword is used to create generators. It allows a function to return values lazily, one at a time, without storing all of them in memory.",
+                "When a function contains a yield statement, it becomes a generator, and each call to 'next()' produces the next value.",
+                "Using yield is memory-efficient when working with large data sets, as it produces values only when requested."
+            ]
+        },
+        {
+            "intent": "decorators_and_closures",
+            "questions": [
+                "What is a function decorator in Python?",
+                "How do function decorators work in Python?"
+            ],
+            "answers": [
+                "A function decorator is a function that modifies the behavior of another function.",
+                "Decorators are often used to add functionality like logging, memoization, or access control to functions.",
+                "A decorator is applied using the '@' symbol before the function definition."
+            ]
+        },
+        {
+            "intent": "decorators_and_closures",
+            "questions": [
+                "What is a class decorator in Python?",
+                "How does a class decorator function in Python?"
+            ],
+            "answers": [
+                "A class decorator is similar to a function decorator, but it operates on classes rather than functions.",
+                "Class decorators allow you to modify or extend the functionality of a class dynamically.",
+                "Class decorators are useful for adding class-level behavior, like adding new methods or altering initialization logic."
+            ]
+        },
+        {
+            "intent": "decorators_and_closures",
+            "questions": [
+                "What are closures in Python?",
+                "How do closures work in Python?"
+            ],
+            "answers": [
+                "Closures are functions that remember the values of variables from the enclosing scope, even after that scope has finished executing.",
+                "A closure occurs when a function returns another function that captures the local variables of the outer function.",
+                "Closures can be used to create factory functions or callbacks that need access to specific variables."
+            ]
+        },
+        {
+            "intent": "lambda_functions",
+            "questions": [
+                "What is a lambda function in Python?",
+                "How is a lambda function different from a regular function in Python?"
+            ],
+            "answers": [
+                "A lambda function is an anonymous function defined using the 'lambda' keyword, often used for short operations.",
+                "Lambda functions are small, single-expression functions that don't require a formal function definition.",
+                "They are often used in functional programming tasks like mapping, filtering, or reducing data."
+            ]
+        },
+        {
+            "intent": "lambda_functions",
+            "questions": [
+                "How can lambda functions be used with `map`?",
+                "What is the purpose of using lambda with `map` in Python?"
+            ],
+            "answers": [
+                "Lambda functions can be used with 'map' to apply a function to each element of an iterable, returning an iterator.",
+                "For example: map(lambda x: x * 2, [1, 2, 3]) will multiply each element by 2.",
+                "Lambda with map helps in applying simple transformations to a collection of data efficiently."
+            ]
+        },
+        {
+            "intent": "lambda_functions",
+            "questions": [
+                "What is the purpose of `filter` in Python?",
+                "How does the `filter` function work in Python?"
+            ],
+            "answers": [
+                "The 'filter' function filters elements from an iterable based on a condition, returning only the items for which the condition is True.",
+                "Filter works by applying a function that returns True or False for each item in an iterable.",
+                "For example: filter(lambda x: x > 0, [-1, 0, 1]) will filter out non-positive values."
+            ]
+        },
+        {
+            "intent": "advanced_data_structures",
+            "questions": [
+                "What is a stack in Python?",
+                "How is a stack implemented in Python?"
+            ],
+            "answers": [
+                "A stack is a data structure that follows the Last In First Out (LIFO) principle.",
+                "In a stack, the last element added is the first one to be removed, similar to a stack of plates.",
+                "Python's list can be used to implement a stack using append() to push and pop() to remove items."
+            ]
+        },
+        {
+            "intent": "advanced_data_structures",
+            "questions": [
+                "How do you implement a queue in Python?",
+                "What data structure is used to implement a queue in Python?"
+            ],
+            "answers": [
+                "A queue is a linear data structure that follows the First In First Out (FIFO) principle.",
+                "In Python, you can use the collections.deque class to efficiently implement a queue.",
+                "Queues are often used in situations like task scheduling and breadth-first search algorithms."
+            ]
+        },
+        {
+            "intent": "advanced_data_structures",
+            "questions": [
+                "What are heaps used for?",
+                "How do heaps work in Python?"
+            ],
+            "answers": [
+                "A heap is a binary tree used for efficient priority queue operations.",
+                "Heaps are commonly used in algorithms like Dijkstra’s shortest path and in sorting algorithms.",
+                "Python’s heapq module provides a way to use heaps for efficient minimum element access and extraction."
+            ]
+        },
+        {
+            "intent": "advanced_data_structures",
+            "questions": [
+                "What is the difference between graphs and trees?",
+                "How are graphs and trees different in data structures?"
+            ],
+            "answers": [
+                "A tree is a type of graph that has a hierarchical structure with a single root, whereas a graph can have multiple roots and cycles.",
+                "Graphs can represent more general relationships with connections between nodes, whereas trees are more specific and don’t have cycles.",
+                "In a tree, there is exactly one path between any two nodes, whereas in a graph, cycles can exist between nodes."
+            ]
+        },
+        {
+            "intent": "algorithms",
+            "questions": [
+                "What are sorting algorithms?",
+                "How do sorting algorithms work?"
+            ],
+            "answers": [
+                "Sorting algorithms are algorithms used to arrange elements in a specific order, like ascending or descending.",
+                "Common sorting algorithms include Bubble Sort, Merge Sort, and Quick Sort.",
+                "Sorting algorithms can be categorized based on time complexity and memory usage, such as O(n^2) or O(n log n)."
+            ]
+        },
+        {
+            "intent": "algorithms",
+            "questions": [
+                "What are searching algorithms?",
+                "How do searching algorithms help find elements?"
+            ],
+            "answers": [
+                "Searching algorithms are used to find an element in a data structure.",
+                "Examples include Linear Search and Binary Search, where Linear Search checks each element one by one, and Binary Search divides the data in half each time.",
+                "Choosing the right searching algorithm can depend on factors like the size of the dataset and whether it is sorted."
+            ]
+        },
+        {
+            "intent": "algorithms",
+            "questions": [
+                "What is recursion in Python?",
+                "How does recursion work in Python?"
+            ],
+            "answers": [
+                "Recursion is a technique where a function calls itself in order to solve smaller instances of the same problem.",
+                "A recursive function typically has a base case to stop the recursion, preventing an infinite loop.",
+                "Recursion can simplify problems like tree traversal and solving problems that have a recursive structure."
+            ]
+        },
+        {
+            "intent": "algorithms",
+            "questions": [
+                "What is dynamic programming?",
+                "How does dynamic programming optimize problem-solving?"
+            ],
+            "answers": [
+                "Dynamic programming is an optimization technique used to solve problems by breaking them down into simpler subproblems.",
+                "It is used when a problem can be divided into overlapping subproblems, and solutions to subproblems are reused.",
+                "Examples include algorithms like Fibonacci sequence calculation, shortest path problems, and knapsack problems."
+            ]
+        },
+        {
+            "intent": "concurrency_and_parallelism",
+            "questions": [
+                "What is threading in Python?",
+                "How does threading help in Python?"
+            ],
+            "answers": [
+                "Threading allows for running multiple threads (smaller units of a process) in parallel, enabling concurrent execution.",
+                "Threads share the same memory space but can run independently, which is useful for tasks like IO-bound operations.",
+                "Python’s threading module can be used to create and manage threads in a program."
+            ]
+        },
+        {
+            "intent": "concurrency_and_parallelism",
+            "questions": [
+                "What is multiprocessing in Python?",
+                "How does multiprocessing differ from threading?"
+            ],
+            "answers": [
+                "Multiprocessing allows for the execution of multiple processes in parallel, utilizing multiple CPU cores.",
+                "Unlike threading, multiprocessing involves creating separate memory spaces for each process, avoiding the Global Interpreter Lock (GIL).",
+                "The multiprocessing module in Python can be used for parallel execution of CPU-bound tasks."
+            ]
+        },
+        {
+            "intent": "concurrency_and_parallelism",
+            "questions": [
+                "What is asyncio in Python?",
+                "How does asyncio work in Python?"
+            ],
+            "answers": [
+                "Asyncio is a Python library used for writing concurrent code using async/await syntax.",
+                "It is particularly useful for IO-bound tasks, allowing for non-blocking execution without using multiple threads or processes.",
+                "Asyncio can handle large-scale networking and IO operations efficiently, such as handling thousands of requests."
+            ]
+        },
+        {
+            "intent": "testing_and_debugging",
+            "questions": [
+                "What is unit testing?",
+                "How does unit testing work in Python?"
+            ],
+            "answers": [
+                "Unit testing involves testing individual units or components of a program to ensure they work as expected.",
+                "In Python, you can write unit tests using frameworks like unittest or pytest.",
+                "Unit testing helps identify issues early in the development process, ensuring code reliability."
+            ]
+        },
+        {
+            "intent": "testing_and_debugging",
+            "questions": [
+                "What is debugging in Python?",
+                "How can you debug your code in Python?"
+            ],
+            "answers": [
+                "Debugging is the process of identifying and fixing bugs or issues in code.",
+                "In Python, tools like pdb (Python Debugger) and logging are commonly used for debugging.",
+                "Debugging helps developers understand the flow of the program and resolve errors effectively."
+            ]
+        },
+        {
+            "intent": "testing_and_debugging",
+            "questions": [
+                "What is the purpose of logging in Python?",
+                "Why is logging important in Python?"
+            ],
+            "answers": [
+                "Logging is used to track events that happen during program execution, providing insight into the program’s behavior.",
+                "Python’s logging module allows you to write log messages to files, helping with tracking and debugging complex applications.",
+                "Logging can be configured for different levels, such as DEBUG, INFO, WARNING, and ERROR."
+            ]
+        },
+        {
+            "intent": "web_development",
+            "questions": [
+                "What is Flask in Python?",
+                "How does Flask help in web development?"
+            ],
+            "answers": [
+                "Flask is a lightweight web framework for building web applications in Python.",
+                "It is designed to be simple and flexible, allowing developers to add only the components they need.",
+                "Flask provides routing, templates, and request handling features for building web apps."
+            ]
+        },
+        {
+            "intent": "web_development",
+            "questions": [
+                "What is Django in Python?",
+                "How does Django help in web development?"
+            ],
+            "answers": [
+                "Django is a high-level web framework for Python that encourages rapid development and clean, pragmatic design.",
+                "Django includes built-in features like authentication, database handling, and an admin interface, making it a full-stack framework.",
+                "It is particularly popular for building large-scale, secure web applications."
+            ]
+        },
+        {
+            "intent": "web_development",
+            "questions": [
+                "What are REST APIs?",
+                "How do REST APIs work?"
+            ],
+            "answers": [
+                "REST (Representational State Transfer) APIs are a type of web service that allows communication between client and server over HTTP.",
+                "A REST API typically uses CRUD operations (Create, Read, Update, Delete) to interact with resources.",
+                "REST APIs are stateless and typically return data in JSON format."
+            ]
+        },
+        {
+            "intent": "web_development",
+            "questions": [
+                "What is GraphQL?",
+                "How is GraphQL different from REST?"
+            ],
+            "answers": [
+                "GraphQL is a query language for APIs that allows clients to request exactly the data they need.",
+                "Unlike REST, GraphQL allows clients to retrieve related data in a single request.",
+                "GraphQL is flexible and efficient, enabling better control over the data and reducing the number of requests."
+            ]
+        },
+        {
+            "intent": "web_development",
+            "questions": [
+                "What is a templating engine in web development?",
+                "How does a templating engine work?"
+            ],
+            "answers": [
+                "A templating engine is used to separate the presentation logic from the application logic by allowing dynamic content generation in HTML.",
+                "Jinja2 is a popular templating engine in Python, used in both Flask and Django for rendering HTML templates.",
+                "Templating engines allow you to embed variables and control structures (like loops and conditionals) directly into HTML."
+            ]
+        },
+        
+            {
+                "intent": "try_except_else_finally_blocks",
+                "questions": [
+                    "What are the 'try', 'except', 'else', and 'finally' blocks in Python?",
+                    "How do the 'try', 'except', 'else', and 'finally' blocks work together for error handling?"
+                ],
+                "answers": [
+                    "The 'try' block tests a block of code for errors. If an error occurs, the 'except' block catches the exception. The 'else' block runs if no error occurs, and the 'finally' block always runs, whether there is an error or not.",
+                    "These blocks help you handle errors by trying code in 'try', catching errors with 'except', running an 'else' block if no errors happen, and always executing 'finally' for cleanup tasks.",
+                    "The 'try' block lets you attempt risky code. The 'except' block catches any errors that occur, the 'else' block runs when there are no errors, and 'finally' ensures code runs regardless of exceptions."
+                ]
+            },
+            {
+                "intent": "raising_exceptions",
+                "questions": [
+                    "How do you raise exceptions in Python?",
+                    "What is the syntax for raising exceptions in Python?"
+                ],
+                "answers": [
+                    "You can raise exceptions in Python using the 'raise' keyword followed by an exception. For example: raise ValueError('Invalid input').",
+                    "The 'raise' keyword is used to trigger exceptions manually. You can also raise built-in exceptions or custom exceptions.",
+                    "Raising exceptions allows you to enforce error conditions in your code, ensuring that they are caught and handled properly."
+                ]
+            },
+            {
+                "intent": "custom_exceptions",
+                "questions": [
+                    "What are custom exceptions in Python?",
+                    "How do you create and use custom exceptions in Python?"
+                ],
+                "answers": [
+                    "Custom exceptions are user-defined exceptions that inherit from Python's built-in Exception class, allowing you to create more meaningful error messages.",
+                    "To create a custom exception, define a new class that inherits from Exception. You can raise it in your code to handle specific error situations.",
+                    "Custom exceptions are useful when you need to handle unique error conditions that don't fit the standard Python exceptions."
+                ]
+            },
+        {
+            "intent": "classes_and_objects",
+            "questions": [
+                "What are classes and objects in Python?",
+                "How do classes and objects work in Python?"
+            ],
+            "answers": [
+                "A class is a blueprint for creating objects, while an object is an instance of a class. Classes define the properties and methods that their objects will have.",
+                "In Python, a class is defined using the 'class' keyword. Objects are instances of a class created by calling the class as a function.",
+                "Classes and objects provide a way to bundle data and functionality together, making code more modular and easier to maintain."
+            ]
+        },
+        {
+            "intent": "inheritance_and_polymorphism",
+            "questions": [
+                "What is inheritance in Python?",
+                "How does inheritance work in Python?"
+            ],
+            "answers": [
+                "Inheritance allows one class to inherit the attributes and methods of another class, enabling code reuse.",
+                "In Python, a subclass can inherit from a parent class and extend or override its functionality.",
+                "Inheritance simplifies code maintenance and enhances reusability by creating a relationship between classes."
+            ]
+        },
+        {
+            "intent": "inheritance_and_polymorphism",
+            "questions": [
+                "What is polymorphism in Python?",
+                "How does polymorphism work in Python?"
+            ],
+            "answers": [
+                "Polymorphism allows different classes to define the same method name but implement it differently.",
+                "It enables methods to behave differently based on the object that calls them, making code more flexible and extensible.",
+                "Polymorphism is achieved through method overriding, where a subclass provides its own version of a method defined in the parent class."
+            ]
+        },
+        {
+            "intent": "encapsulation_and_abstraction",
+            "questions": [
+                "What is encapsulation in Python?",
+                "How does encapsulation help in Python?"
+            ],
+            "answers": [
+                "Encapsulation is the practice of bundling data and methods within a class and restricting access to some components using access modifiers.",
+                "In Python, encapsulation is achieved by making variables or methods private or protected using underscores (_ or __).",
+                "Encapsulation helps in hiding the internal workings of an object and only exposing the necessary functionalities, improving security and maintainability."
+            ]
+        },
+        {
+            "intent": "encapsulation_and_abstraction",
+            "questions": [
+                "What is abstraction in Python?",
+                "How does abstraction work in Python?"
+            ],
+            "answers": [
+                "Abstraction is the concept of hiding the implementation details of a class and providing only essential information to the user.",
+                "Abstraction is achieved by defining abstract methods in base classes or using Python's abstract base classes (ABC).",
+                "It allows programmers to focus on high-level functionality without worrying about low-level implementation details."
+            ]
+        },
+        {
+            "intent": "special_methods",
+            "questions": [
+                "What is the `__init__` method in Python?",
+                "How does the `__init__` method work in Python?"
+            ],
+            "answers": [
+                "The `__init__` method is the constructor in Python, called when an object is created. It is used to initialize the object's attributes.",
+                "The `__init__` method is automatically called when an object of a class is instantiated, and it can accept parameters to initialize the object’s state.",
+                "The `__init__` method allows you to set default values for an object's attributes or perform any setup when the object is created."
+            ]
+        },
+        {
+            "intent": "special_methods",
+            "questions": [
+                "What is the `__str__` method in Python?",
+                "How does the `__str__` method work in Python?"
+            ],
+            "answers": [
+                "The `__str__` method is used to define the string representation of an object, which is called when you use `str()` on an object or print it.",
+                "By implementing the `__str__` method, you can control how objects of your class are displayed as strings, making them more readable.",
+                "The `__str__` method returns a human-readable string that represents the object, helping in debugging and logging."
+            ]
+        },
+        {
+            "intent": "special_methods",
+            "questions": [
+                "What are other special methods in Python?",
+                "Can you give examples of other special methods in Python?"
+            ],
+            "answers": [
+                "Other special methods include `__repr__`, `__add__`, `__len__`, and `__eq__`. These allow objects to behave in a way that supports operations like addition, equality comparison, and representation.",
+                "For example, `__repr__` provides a formal string representation of an object, `__add__` allows for the addition of objects, and `__len__` returns the length of an object.",
+                "Special methods enable Python objects to interact with built-in functions, perform mathematical operations, and be represented in specific ways."
+            ]
+        },
+        {
+            "intent": "__iter__and__next__methods",
+            "questions": [
+              "What are the `__iter__` and `__next__` methods in Python?",
+              "How do the `__iter__` and `__next__` methods work together in Python?"
+            ],
+            "answers": [
+              "The `__iter__` method is used to initialize an iterator, and `__next__` retrieves the next item in the sequence.",
+              "The `__iter__` method returns the iterator object itself, and the `__next__` method returns the next element in the sequence, raising a `StopIteration` when the end is reached.",
+              "In Python, the `__iter__` method sets up an iterable object, and `__next__` is used to iterate through its elements one by one."
+            ]
+          },
+          {
+            "intent": "__iter__and__next__methods",
+            "questions": [
+              "What is the purpose of `__iter__` in an iterator?",
+              "How does the `__next__` method work in an iterator?"
+            ],
+            "answers": [
+              "`__iter__` allows an object to be iterated over. It returns the iterator object itself to enable iteration with a `for` loop.",
+              "The `__next__` method fetches the next item in an iterable, and once all items have been iterated over, it raises a `StopIteration` exception.",
+              "In a custom iterator, `__iter__` prepares the object for iteration, and `__next__` yields the next item from the collection until the iteration ends."
+            ]
+          },
+          {
+            "intent": "yield_keyword",
+            "questions": [
+              "What does the `yield` keyword do in Python?",
+              "How is `yield` used in Python?"
+            ],
+            "answers": [
+              "The `yield` keyword is used in a function to create a generator, allowing the function to return multiple values lazily without storing them in memory.",
+              "The `yield` statement pauses the function’s execution and allows it to return a value. The function can be resumed later from where it left off.",
+              "In a generator function, `yield` produces values one at a time, saving memory by not computing all values at once."
+            ]
+          },
+          {
+            "intent": "yield_keyword",
+            "questions": [
+              "How does `yield` improve memory efficiency in Python?",
+              "What is the difference between `yield` and `return` in Python?"
+            ],
+            "answers": [
+              "`yield` improves memory efficiency by returning values one at a time, which is ideal when working with large datasets or streams of data.",
+              "Unlike `return`, which terminates the function, `yield` pauses the function’s state and allows it to produce multiple values over time.",
+              "`yield` allows Python to generate values on demand, while `return` immediately sends a result and ends the function’s execution."
+            ]
+          },
+          {
+            "intent": "function_decorators",
+            "questions": [
+              "What is a function decorator in Python?",
+              "How do function decorators work in Python?"
+            ],
+            "answers": [
+              "A function decorator is a higher-order function that modifies the behavior of another function.",
+              "A decorator is applied to a function using the `@` symbol and allows additional functionality like logging, timing, or validation to be added to the original function.",
+              "Function decorators are often used for cross-cutting concerns, like checking if a user is authorized or logging the function’s behavior."
+            ]
+          },
+          {
+            "intent": "function_decorators",
+            "questions": [
+              "How can you create a custom decorator in Python?",
+              "What is the purpose of the `functools.wraps()` function in decorators?"
+            ],
+            "answers": [
+              "A custom decorator is created by defining a function that accepts a function as an argument, and then returns a new function that wraps the original function.",
+              "The `functools.wraps()` function is used in decorators to preserve the metadata of the original function, such as its name and docstring.",
+              "To create a decorator, you define a wrapper function that calls the original function and adds any additional behavior before or after the call."
+            ]
+          },
+          {
+            "intent": "class_decorators",
+            "questions": [
+              "What is a class decorator in Python?",
+              "How do class decorators work in Python?"
+            ],
+            "answers": [
+              "A class decorator is a function that takes a class as an argument and returns a new class or modifies the original class in some way.",
+              "Class decorators are useful for adding or modifying class attributes or methods without changing the original class code.",
+              "You can use a class decorator to automatically modify a class’s behavior, such as adding additional functionality or enforcing design patterns."
+            ]
+          },
+          {
+            "intent": "class_decorators",
+            "questions": [
+              "How do you use a class decorator to modify a class in Python?",
+              "What is an example of a class decorator?"
+            ],
+            "answers": [
+              "To use a class decorator, you define a decorator function that takes a class and returns a modified or new class, and you apply it using the `@` syntax.",
+              "For example, a class decorator might add a new method to the class or alter the behavior of existing methods, such as adding logging or validation to class methods.",
+              "A common use case for class decorators is adding singleton behavior, ensuring that only one instance of a class can be created."
+            ]
+          },
+          {
+            "intent": "closures_and_nested_functions",
+            "questions": [
+              "What are closures in Python?",
+              "How do closures work with nested functions in Python?"
+            ],
+            "answers": [
+              "A closure is a function that retains access to variables from its enclosing scope, even after the outer function has finished executing.",
+              "Closures are created when a nested function captures variables from its enclosing function. These captured variables are remembered even after the outer function returns.",
+              "A closure occurs when a nested function refers to variables from the enclosing function's scope, maintaining access to those variables even after the outer function has ended."
+            ]
+          },
+          {
+            "intent": "closures_and_nested_functions",
+            "questions": [
+              "Can a closure access global variables in Python?",
+              "How does Python implement closures with nested functions?"
+            ],
+            "answers": [
+              "A closure can access global variables if they are referenced in the nested function, but it primarily captures local variables from the enclosing scope.",
+              "Python implements closures by allowing nested functions to access variables from their enclosing functions, even after those functions return."
+            ]
+          },
+          {
+            "intent": "anonymous_functions",
+            "questions": [
+              "What are anonymous functions in Python?",
+              "How does an anonymous function work in Python?"
+            ],
+            "answers": [
+              "Anonymous functions, or lambda functions, are functions defined without a name, typically used for short operations.",
+              "Lambda functions in Python are defined using the `lambda` keyword and can have any number of arguments but only one expression.",
+              "Anonymous functions are useful when a simple function is needed temporarily, like when used in functional programming with functions like `map` or `filter`."
+            ]
+          },
+          {
+            "intent": "anonymous_functions",
+            "questions": [
+              "What is the syntax for a lambda function in Python?",
+              "When should you use lambda functions in Python?"
+            ],
+            "answers": [
+              "The syntax for a lambda function is `lambda arguments: expression`, where `arguments` is a list of input parameters and `expression` is the value returned.",
+              "You should use lambda functions when a simple, one-line function is required, such as for sorting or filtering items in a collection."
+            ]
+          },
+          {
+            "intent": "use_with_map_filter_reduce",
+            "questions": [
+              "How can lambda functions be used with `map`, `filter`, and `reduce` in Python?",
+              "What are the uses of `map`, `filter`, and `reduce` functions in Python?"
+            ],
+            "answers": [
+              "Lambda functions are commonly used with `map`, `filter`, and `reduce` to apply a function to each element, filter data, or accumulate results.",
+              "For example, `map(lambda x: x*2, list)` doubles each element in a list, `filter(lambda x: x>0, list)` filters out non-positive elements, and `reduce(lambda x, y: x + y, list)` sums the elements in a list."
+            ]
+          },
+          {
+            "intent": "use_with_map_filter_reduce",
+            "questions": [
+              "How can you use lambda with `map()` in Python?",
+              "What does `filter()` do in Python?"
+            ],
+            "answers": [
+              "With `map()`, lambda functions can be applied to all items in a list or iterable, modifying them in the process.",
+              "The `filter()` function applies a lambda expression to filter out elements in a sequence based on a condition, returning only elements that evaluate as `True`."
+            ]
+          },
+        
+          {
+            "intent": "stacks_queues_and_heaps",
+            "questions": [
+              "What is a stack in Python?",
+              "How does a stack operate in Python?"
+            ],
+            "answers": [
+              "A stack is a linear data structure that follows the Last In First Out (LIFO) principle, where the last item added is the first to be removed.",
+              "Stacks in Python can be implemented using lists, where `append()` adds an item and `pop()` removes it, both operating at the end of the list.",
+              "Stacks are commonly used in algorithms like depth-first search or for reversing data structures."
+            ]
+          },
+          {
+            "intent": "stacks_queues_and_heaps",
+            "questions": [
+              "What is a queue in Python?",
+              "How does a queue operate in Python?"
+            ],
+            "answers": [
+              "A queue is a linear data structure that follows the First In First Out (FIFO) principle, where the first item added is the first to be removed.",
+              "Queues can be implemented using lists or collections.deque, with `append()` to add and `popleft()` to remove items efficiently.",
+              "Queues are often used in breadth-first search algorithms or task scheduling."
+            ]
+          },
+          {
+            "intent": "stacks_queues_and_heaps",
+            "questions": [
+              "What is a heap in Python?",
+              "How do heaps work in Python?"
+            ],
+            "answers": [
+              "A heap is a binary tree data structure where the parent node is always less than (min-heap) or greater than (max-heap) its child nodes.",
+              "In Python, heaps can be implemented using the `heapq` module, which provides efficient methods for adding and removing elements from a heap.",
+              "Heaps are primarily used to implement priority queues."
+            ]
+          },
+          {
+            "intent": "linked_lists",
+            "questions": [
+              "What is a linked list in Python?",
+              "How does a singly linked list work in Python?"
+            ],
+            "answers": [
+              "A linked list is a linear data structure where each element (node) points to the next node, making it efficient for dynamic memory allocation.",
+              "In a singly linked list, each node contains data and a reference (or link) to the next node in the list, with the last node pointing to `None`.",
+              "Linked lists are efficient for insertions and deletions compared to arrays, especially when working with large data sets."
+            ]
+          },
+          {
+            "intent": "linked_lists",
+            "questions": [
+              "What is a doubly linked list?",
+              "How does a doubly linked list differ from a singly linked list?"
+            ],
+            "answers": [
+              "A doubly linked list is a type of linked list where each node points to both the next and previous node, allowing bidirectional traversal.",
+              "The primary difference between singly and doubly linked lists is that in a doubly linked list, each node has two references: one for the next node and one for the previous node.",
+              "Doubly linked lists allow for more efficient removal of nodes from both ends but require more memory to store the extra reference."
+            ]
+          },
+          {
+            "intent": "graphs_and_trees",
+            "questions": [
+              "What is the difference between a graph and a tree?",
+              "How do graphs and trees differ in structure?"
+            ],
+            "answers": [
+              "A tree is a hierarchical structure with a single root, whereas a graph can have cycles and no root, allowing more complex relationships.",
+              "In a tree, there is a parent-child relationship, but in a graph, nodes can be interconnected in various ways, including cycles and loops.",
+              "Trees are a special type of graph where every node has at most one parent, whereas a graph can have multiple connections between nodes."
+            ]
+          },
+          {
+            "intent": "graphs_and_trees",
+            "questions": [
+              "What is a binary tree?",
+              "How does a binary search tree (BST) work?"
+            ],
+            "answers": [
+              "A binary tree is a tree data structure where each node has at most two children, typically referred to as the left and right children.",
+              "In a binary search tree, nodes are arranged such that for each node, the left child contains smaller values and the right child contains larger values.",
+              "Binary trees are commonly used in searching and sorting algorithms due to their efficient structure."
+            ]
+          },
+          {
+            "intent": "sorting_algorithms",
+            "questions": [
+              "What is the bubble sort algorithm?",
+              "How does bubble sort work?"
+            ],
+            "answers": [
+              "Bubble sort is a simple sorting algorithm that repeatedly steps through the list, compares adjacent elements, and swaps them if they are in the wrong order.",
+              "The process is repeated until no more swaps are needed, making the list sorted.",
+              "Although simple, bubble sort is inefficient for large datasets due to its O(n²) time complexity."
+            ]
+          },
+          {
+            "intent": "sorting_algorithms",
+            "questions": [
+              "What is quicksort?",
+              "How does the quicksort algorithm work?"
+            ],
+            "answers": [
+              "Quicksort is a divide-and-conquer sorting algorithm that selects a pivot element and partitions the list into two sublists, one with smaller elements and the other with larger ones.",
+              "The process is repeated recursively on the sublists until the entire list is sorted.",
+              "Quicksort has an average time complexity of O(n log n) and is generally more efficient than bubble sort."
+            ]
+          },
+          {
+            "intent": "sorting_algorithms",
+            "questions": [
+              "What is merge sort?",
+              "How does the merge sort algorithm work?"
+            ],
+            "answers": [
+              "Merge sort is a divide-and-conquer sorting algorithm that splits the list into two halves, recursively sorts them, and then merges them back together.",
+              "Merge sort works by repeatedly dividing the list into smaller sublists, sorting them, and combining them to form the final sorted list.",
+              "Merge sort has a time complexity of O(n log n) and is particularly useful for sorting large datasets."
+            ]
+          },
+          {
+            "intent": "searching_algorithms",
+            "questions": [
+              "What is linear search?",
+              "How does linear search work?"
+            ],
+            "answers": [
+              "Linear search is a simple searching algorithm that checks each element of the list sequentially until the desired value is found.",
+              "It is easy to implement but inefficient for large lists, as its time complexity is O(n).",
+              "Linear search works well for unsorted or small datasets where a binary search might not be applicable."
+            ]
+          },
+          {
+            "intent": "searching_algorithms",
+            "questions": [
+              "What is binary search?",
+              "How does binary search work?"
+            ],
+            "answers": [
+              "Binary search is an efficient searching algorithm that works on sorted lists by repeatedly dividing the list in half until the desired value is found.",
+              "The search starts with the middle element; if the desired value is smaller, the search continues on the left half, and if it's larger, it continues on the right half.",
+              "Binary search has a time complexity of O(log n), making it much more efficient than linear search for large datasets."
+            ]
+          },
+          {
+            "intent": "recursion_and_dynamic_programming",
+            "questions": [
+              "What is recursion in Python?",
+              "How does recursion work?"
+            ],
+            "answers": [
+              "Recursion in Python occurs when a function calls itself to solve a smaller version of the problem until it reaches a base case.",
+              "Recursive functions typically have a base case that stops further recursive calls, and each call solves a part of the overall problem.",
+              "Recursion is often used in algorithms like tree traversal and divide-and-conquer strategies."
+            ]
+          },
+          {
+            "intent": "recursion_and_dynamic_programming",
+            "questions": [
+              "What is dynamic programming?",
+              "How does dynamic programming differ from recursion?"
+            ],
+            "answers": [
+              "Dynamic programming is an optimization technique where solutions to subproblems are stored to avoid redundant calculations, improving efficiency.",
+              "While recursion solves problems by breaking them down into smaller subproblems, dynamic programming uses memoization or tabulation to store intermediate results.",
+              "Dynamic programming is useful when the same subproblems are encountered multiple times in the process."
+            ]
+          },
+          {
+            "intent": "recursion_and_dynamic_programming",
+            "questions": [
+              "What is memoization in dynamic programming?",
+              "How does memoization improve performance in dynamic programming?"
+            ],
+            "answers": [
+              "Memoization is the process of storing the results of expensive function calls and reusing the cached results when the same inputs occur again.",
+              "By using memoization, dynamic programming reduces the time complexity from exponential to polynomial by avoiding redundant calculations."
+            ]
+          },
+          {
+            "intent": "threading",
+            "questions": [
+              "What is threading in Python?",
+              "How does threading work in Python?"
+            ],
+            "answers": [
+              "Threading in Python allows multiple threads to execute concurrently, sharing the same memory space, which helps improve performance for I/O-bound tasks.",
+              "Python's `threading` module provides an easy way to create and manage threads, allowing multiple parts of a program to run in parallel.",
+              "Threading is useful when tasks can run independently without needing to interact with each other frequently."
+            ]
+          },
+          {
+            "intent": "multiprocessing",
+            "questions": [
+              "What is multiprocessing in Python?",
+              "How does multiprocessing differ from threading?"
+            ],
+            "answers": [
+              "Multiprocessing in Python allows for parallel execution by using separate processes, each with its own memory space.",
+              "Unlike threading, which shares memory space, multiprocessing avoids the Global Interpreter Lock (GIL), making it more suitable for CPU-bound tasks.",
+              "Multiprocessing is beneficial for tasks that can be executed independently without sharing state or data."
+            ]
+          },
+          {
+            "intent": "asyncio",
+            "questions": [
+              "What is asyncio in Python?",
+              "How does asyncio enable asynchronous programming in Python?"
+            ],
+            "answers": [
+              "Asyncio is a Python library used for writing asynchronous programs, enabling the execution of code without blocking other operations.",
+              "With asyncio, tasks are scheduled and executed in an event loop, allowing non-blocking I/O operations to run concurrently, improving efficiency for I/O-bound tasks.",
+              "Asyncio is ideal for scenarios like web scraping, web servers, or real-time applications where tasks must run concurrently."
+            ]
+          },
+          {
+            "intent": "unit_testing",
+            "questions": [
+              "What is unit testing in Python?",
+              "How do you write unit tests using `unittest`?"
+            ],
+            "answers": [
+              "Unit testing involves testing individual functions or components of a program to ensure they work as expected.",
+              "In Python, the `unittest` module is used to create test cases for individual functions, providing methods for setup, assertions, and teardown.",
+              "Unit tests help catch bugs early and ensure code behaves correctly during development."
+            ]
+          },
+          {
+            "intent": "debugging_tools",
+            "questions": [
+              "What is the `pdb` module in Python?",
+              "How do you use `pdb` for debugging in Python?"
+            ],
+            "answers": [
+              "The `pdb` module in Python is a debugger that allows step-by-step execution of code to inspect variables and the program's state.",
+              "You can use `pdb` by inserting `import pdb; pdb.set_trace()` in your code where you want to start debugging and use commands like `n` for next, `c` for continue, or `p` for print variables.",
+              "The `pdb` module helps track down errors and understand code flow by allowing inspection and control of the program's execution."
+            ]
+          },
+          {
+            "intent": "debugging_tools",
+            "questions": [
+              "What is the `logging` module in Python?",
+              "How do you use the `logging` module for debugging?"
+            ],
+            "answers": [
+              "The `logging` module in Python allows you to log messages of different severity levels (DEBUG, INFO, WARNING, ERROR, CRITICAL) for tracking the execution flow.",
+              "You can use the `logging` module to replace print statements and capture detailed information about your program’s behavior for debugging and monitoring."
+            ]
+          },
+          {
+            "intent": "flask_and_django",
+            "questions": [
+              "What is Flask in Python?",
+              "How does Flask help in web development?"
+            ],
+            "answers": [
+              "Flask is a micro web framework for Python that is lightweight and easy to use, making it suitable for small to medium-sized web applications.",
+              "Flask provides tools to handle routing, HTTP requests, and templating, allowing you to quickly build web applications without much overhead."
+            ]
+          },
+          {
+            "intent": "flask_and_django",
+            "questions": [
+              "What is Django in Python?",
+              "How does Django differ from Flask?"
+            ],
+            "answers": [
+              "Django is a high-level web framework for Python that encourages rapid development and clean, pragmatic design. It comes with built-in features like an ORM, authentication, and more.",
+              "Django is more feature-rich and suited for larger applications, while Flask is more lightweight and flexible for smaller projects."
+            ]
+          },
+          {
+            "intent": "rest_apis_and_graphql",
+            "questions": [
+              "What is a REST API?",
+              "How does REST API work?"
+            ],
+            "answers": [
+              "A REST API (Representational State Transfer) is an architectural style for designing networked applications that uses stateless communication and standard HTTP methods like GET, POST, PUT, and DELETE.",
+              "In REST APIs, each request is treated independently, and resources are accessed using URLs, which represent entities such as users or posts."
+            ]
+          },
+          {
+            "intent": "rest_apis_and_graphql",
+            "questions": [
+              "What is GraphQL?",
+              "How does GraphQL differ from REST?"
+            ],
+            "answers": [
+              "GraphQL is a query language for APIs that allows clients to request specific data from a server, minimizing over-fetching and under-fetching of data.",
+              "Unlike REST, where endpoints return fixed responses, GraphQL lets clients specify the structure of the data they need, offering more flexibility and efficiency."
+            ]
+          },
+          {
+            "intent": "templating_engines",
+            "questions": [
+              "What is Jinja2 in Python?",
+              "How does Jinja2 help in templating?"
+            ],
+            "answers": [
+              "Jinja2 is a popular templating engine for Python, often used with Flask to render HTML templates by embedding dynamic data into static files.",
+              "Jinja2 allows you to use loops, conditionals, and filters in templates, making it easy to generate dynamic HTML content based on server-side data."
+            ]
+          }
+        
+        
+    ]
+}
