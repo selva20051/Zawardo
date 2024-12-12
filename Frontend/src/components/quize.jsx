@@ -158,7 +158,7 @@ const Quiz = () => {
         }
 
         try {
-            const response = await axios.post("http://localhost:5001/evaluate", {
+            const response = await axios.post("http://localhost:5001/api/evaluate", {
                 answers: answers.map((answerIndex, questionIndex) => ({
                     question: questions[questionIndex].question,
                     answer: questions[questionIndex].choices[answerIndex]

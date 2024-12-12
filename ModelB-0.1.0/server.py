@@ -11,9 +11,11 @@ from googletrans import Translator
 from sklearn.metrics.pairwise import cosine_similarity
 from flask import Flask, request, jsonify
 from transformers import AutoTokenizer, AutoModel
+from flask_cors import CORS  # Import CORS
 
 # Flask app setup
 app = Flask(__name__)
+CORS(app)
 
 # YouTube API configuration
 API_KEY = 'AIzaSyBUifBNejneMKD3DlpqNl4E--HDITZUQRQ'
@@ -360,15 +362,18 @@ def chat():
     data = request.json
     user_input = data.get('message', '')
 
+
     if not user_input:
         return jsonify({"error": "No input provided"}), 400
 
     response, model_used = get_blended_response(user_input)
+    print(response)
+
     return jsonify({
         "response": response,
         "model_used": model_used
     })
-
+  
 
 # API Routes for YouTube Videos and Student Evaluation
 @app.route('/api/videos', methods=['POST'])

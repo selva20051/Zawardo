@@ -16,7 +16,7 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignUpPage />} />
           <Route path="/classroom/:id" element={<InsideClass />} />
-          <Route path="classroom/:id/quiz" element={<Quiz />} />
+          <Route path="quiz" element={<Quiz />} />
           <Route path="/chatbot" element={<ChatbotMenu />} />
 
         </Routes>
