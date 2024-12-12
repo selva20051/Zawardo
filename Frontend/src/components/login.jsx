@@ -6,12 +6,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 // Create axios instance with default config
-const api = axios.create({
-  baseURL: 'http://localhost:5000',
-  headers: {
-    'Content-Type': 'application/json'
-  }
-});
+
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -20,47 +15,32 @@ const LoginPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
-  // Handle message from popup window
-  useEffect(() => {
-    const handleMessage = (event) => {
-      // Verify origin for security
-      if (event.origin !== import.meta.env.VITE_FRONTEND_URL) return;
-      
-      if (event.data.token) {
-        localStorage.setItem("token", event.data.token);
-        localStorage.setItem("userRole", event.data.role || 'USER');
-        console.log('User role:', event.data.role);
-        
-      }
-    };
 
-    window.addEventListener("message", handleMessage);
-    return () => window.removeEventListener("message", handleMessage);
-  }, [navigate]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError("");
-    setIsLoading(true);
-
     try {
-      const response = await api.post('/users/auth', {
+      setError("");
+      setIsLoading(true);
+
+      const response = await axios.post("http://localhost:5000/users/auth", {
         email,
-        password
+        password,
       });
 
       const { data } = response.data;
-      const { authToken, role } = data;
+      const { authToken } = data;
+      localStorage.setItem("user", JSON.stringify(data.user));
+      console.log(data.user);
+      console.log(authToken);
 
       if (authToken) {
         localStorage.setItem("token", authToken);
-        localStorage.setItem("userRole", role || 'USER');
-        navigate(role === 'ADMIN' ? '/admin' : '/');
+        navigate("/");
       }
+      
     } catch (error) {
       setError(error.response?.data?.message || "An error occurred during login");
-    } finally {
-      setIsLoading(false);
     }
   };
 

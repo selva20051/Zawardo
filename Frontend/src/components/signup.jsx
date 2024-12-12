@@ -26,6 +26,9 @@ const SignUpPage = () => {
 
       const { data } = response.data;
       const { authToken } = data;
+      localStorage.setItem("user", JSON.stringify(data.user));
+      console.log(data.user);
+      console.log(authToken);
 
       if (authToken) {
         localStorage.setItem("token", authToken);

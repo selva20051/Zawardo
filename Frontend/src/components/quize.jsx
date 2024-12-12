@@ -1,127 +1,170 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 const Quiz = () => {
     const questions = [
         {
-            question: "Who developed Python programming language?",
+            question: "What is the correct way to create a virtual environment in Python?",
             choices: [
-                "Guido van Rossum",
-                "James Gosling",
-                "Dennis Ritchie",
-                "Bjarne Stroustrup"
+                "python -m venv myenv",
+                "pip install venv",
+                "python virtualenv create myenv",
+                "python venv create myenv"
             ],
-            correct_answer: "Guido van Rossum",
-            explanation: "Python was created by Guido van Rossum and was first released in 1991.",
-            topic: "Python History"
-        },
-        {
-            question: "What is Python's package manager called?",
-            choices: [
-                "pip",
-                "npm",
-                "gem",
-                "composer"
-            ],
-            correct_answer: "pip",
-            explanation: "pip is the standard package manager for Python used to install and manage packages.",
+            correct_answer: "python -m venv myenv",
+            explanation: "The `venv` module is used to create virtual environments in Python by using the command `python -m venv <env_name>`.",
             topic: "Python Basics"
         },
         {
-            question: "Which of these is not a valid variable name in Python?",
-            choices: [
-                "variable",
-                "variable2",
-                "2variable",
-                "variable_two"
-            ],
-            correct_answer: "2variable",
-            explanation: "Variable names cannot start with numbers in Python.",
-            topic: "Variables"
+            question: "Which data type is immutable in Python?",
+            choices: ["List", "Dictionary", "String", "Set"],
+            correct_answer: "String",
+            explanation: "Strings are immutable in Python, meaning their contents cannot be changed after creation.",
+            topic: "Data Types"
         },
         {
-            question: "What is the difference between list and tuple in Python?",
+            question: "What will be the output of the following code?\n\n```python\nx = [1, 2, 3]\ny = x\ny.append(4)\nprint(x)\n```",
             choices: [
-                "Lists are mutable while tuples are immutable",
-                "Lists are immutable while tuples are mutable",
-                "Both are mutable",
-                "Both are immutable"
+                "[1, 2, 3]",
+                "[1, 2, 3, 4]",
+                "Error: append() is not a method of list",
+                "[4]"
             ],
-            correct_answer: "Lists are mutable while tuples are immutable",
-            explanation: "Lists can be modified after creation, while tuples cannot be changed once created.",
+            correct_answer: "[1, 2, 3, 4]",
+            explanation: "In Python, lists are mutable and passed by reference. Modifying `y` also affects `x` since they refer to the same object.",
             topic: "Data Structures"
         },
         {
-            question: "What is the purpose of 'break' statement in Python?",
+            question: "What does the `len()` function do in Python?",
             choices: [
-                "To exit from a loop",
-                "To skip the rest of the current loop iteration",
-                "To exit from a function",
-                "To continue to the next iteration of a loop"
+                "Returns the size of a variable in bytes",
+                "Returns the length of an iterable",
+                "Returns the maximum value in a list",
+                "Returns the type of a variable"
             ],
-            correct_answer: "To exit from a loop",
-            explanation: "The break statement terminates the loop containing it.",
-            topic: "Control Flow"
+            correct_answer: "Returns the length of an iterable",
+            explanation: "`len()` returns the number of items in an iterable, such as a string, list, or dictionary.",
+            topic: "Built-in Functions"
         },
         {
-            question: "What does the 'continue' statement do?",
+            question: "What is a decorator in Python?",
             choices: [
-                "Skips the rest of the current loop iteration",
-                "Exits from a loop",
-                "Exits from a function",
-                "Continues to the next iteration of a loop"
+                "A function that takes another function as argument and extends its behavior",
+                "A class that inherits from another class",
+                "A function that returns multiple values",
+                "A type of loop in Python"
             ],
-            correct_answer: "Skips the rest of the current loop iteration",
-            explanation: "Continue statement skips the remaining code inside a loop for the current iteration.",
-            topic: "Control Flow"
-        },
-        {
-            question: "What is a lambda function in Python?",
-            choices: [
-                "An anonymous function defined using the lambda keyword",
-                "A function defined using the def keyword",
-                "A function that returns another function",
-                "A function that takes another function as an argument"
-            ],
-            correct_answer: "An anonymous function defined using the lambda keyword",
-            explanation: "Lambda functions are small anonymous functions that can have any number of arguments but only one expression.",
-            topic: "Functions"
-        },
-        {
-            question: "What is the difference between args and kwargs?",
-            choices: [
-                "*args passes variable number of non-keyworded arguments and **kwargs passes keyworded arguments",
-                "*args passes keyworded arguments and **kwargs passes non-keyworded arguments",
-                "Both *args and **kwargs pass keyworded arguments",
-                "Both *args and **kwargs pass non-keyworded arguments"
-            ],
-            correct_answer: "*args passes variable number of non-keyworded arguments and **kwargs passes keyworded arguments",
-            explanation: "*args allows passing multiple arguments, **kwargs allows passing multiple keyword arguments.",
-            topic: "Functions"
-        },
-        {
-            question: "What is inheritance in Python?",
-            choices: [
-                "A way to form new classes using classes that have already been defined",
-                "A way to form new functions using functions that have already been defined",
-                "A way to form new variables using variables that have already been defined",
-                "A way to form new modules using modules that have already been defined"
-            ],
-            correct_answer: "A way to form new classes using classes that have already been defined",
-            explanation: "Inheritance allows a class to inherit attributes and methods from another class.",
-            topic: "OOP"
+            correct_answer: "A function that takes another function as argument and extends its behavior",
+            explanation: "Decorators are functions that modify the behavior of another function without changing its source code.",
+            topic: "Advanced Functions"
         },
         {
             question: "What is the purpose of __init__ method?",
             choices: [
-                "Constructor method for initializing object attributes",
-                "Destructor method for cleaning up object attributes",
-                "Method for defining class-level attributes",
-                "Method for defining instance-level attributes"
+                "To initialize class attributes",
+                "To create a new class",
+                "To delete an object",
+                "To import modules"
             ],
-            correct_answer: "Constructor method for initializing object attributes",
-            explanation: "__init__ is called automatically when a new object is created from a class.",
+            correct_answer: "To initialize class attributes",
+            explanation: "The __init__ method is called when an object is created and is used to initialize attributes.",
             topic: "OOP"
+        },
+        {
+            question: "How do you open a file in write mode?",
+            choices: [
+                "open('file.txt', 'w')",
+                "open('file.txt', 'r')",
+                "read('file.txt')",
+                "write('file.txt')"
+            ],
+            correct_answer: "open('file.txt', 'w')",
+            explanation: "The 'w' mode opens a file for writing, creating a new file if it doesn't exist.",
+            topic: "File Handling"
+        },
+        {
+            question: "What is a list comprehension?",
+            choices: [
+                "A shorter syntax to create lists based on existing lists",
+                "A way to sort lists",
+                "A method to combine multiple lists",
+                "A function to count list items"
+            ],
+            correct_answer: "A shorter syntax to create lists based on existing lists",
+            explanation: "List comprehensions provide a concise way to create lists based on existing lists or iterables.",
+            topic: "List Operations"
+        },
+        {
+            question: "What does the 'try-except' block do?",
+            choices: [
+                "Handles exceptions in code",
+                "Creates a new function",
+                "Defines a loop",
+                "Imports modules"
+            ],
+            correct_answer: "Handles exceptions in code",
+            explanation: "Try-except blocks are used for exception handling in Python to handle runtime errors gracefully.",
+            topic: "Exception Handling"
+        },
+        {
+            question: "What is a lambda function?",
+            choices: [
+                "An anonymous function defined using lambda keyword",
+                "A function that always returns True",
+                "A type of class in Python",
+                "A built-in math function"
+            ],
+            correct_answer: "An anonymous function defined using lambda keyword",
+            explanation: "Lambda functions are small anonymous functions that can have any number of arguments but only one expression.",
+            topic: "Functions"
+        },
+        {
+            question: "How do you get all keys from a dictionary?",
+            choices: [
+                "dict.keys()",
+                "dict.get()",
+                "dict.values()",
+                "dict.items()"
+            ],
+            correct_answer: "dict.keys()",
+            explanation: "The keys() method returns a view object containing all keys in the dictionary.",
+            topic: "Dictionaries"
+        },
+        {
+            question: "What is the purpose of 'self' in class methods?",
+            choices: [
+                "References the instance of the class",
+                "Creates a new class",
+                "Defines a static method",
+                "Imports class attributes"
+            ],
+            correct_answer: "References the instance of the class",
+            explanation: "'self' is a convention used to refer to the instance of the class within class methods.",
+            topic: "OOP"
+        },
+        {
+            question: "How do you import a specific function from a module?",
+            choices: [
+                "from module import function",
+                "import module.function",
+                "using module.function",
+                "get function from module"
+            ],
+            correct_answer: "from module import function",
+            explanation: "The 'from...import' statement allows importing specific functions from modules.",
+            topic: "Modules"
+        },
+        {
+            question: "What is string slicing in Python?",
+            choices: [
+                "Extracting parts of a string using index ranges",
+                "Converting string to list",
+                "Joining two strings",
+                "Finding string length"
+            ],
+            correct_answer: "Extracting parts of a string using index ranges",
+            explanation: "String slicing allows you to extract portions of a string using index ranges [start:end:step].",
+            topic: "Strings"
         }
     ];
 
@@ -131,6 +174,8 @@ const Quiz = () => {
     const [results, setResults] = useState(null);
     const [weakTopics, setWeakTopics] = useState({});
     const [showAlert, setShowAlert] = useState(false);
+    const [videos, setVideos] = useState([]);
+    const [isLoadingVideos, setIsLoadingVideos] = useState(false);
 
     const handleNext = () => {
         if (currentQuestion < questions.length - 1) {
@@ -151,6 +196,21 @@ const Quiz = () => {
         setShowAlert(false);
     };
 
+    const fetchRecommendedVideos = async (topics) => {
+        setIsLoadingVideos(true);
+        try {
+            const response = await axios.post("http://localhost:5001/api/videos", {
+                query: `python tutorial ${topics.join(' ')}`,
+                max_results: 5
+            });
+            setVideos(response.data.videos);
+        } catch (error) {
+            console.error("Error fetching videos:", error);
+        } finally {
+            setIsLoadingVideos(false);
+        }
+    };
+
     const handleSubmit = async () => {
         if (answers.includes(null)) {
             setShowAlert(true);
@@ -158,30 +218,43 @@ const Quiz = () => {
         }
 
         try {
-            const response = await axios.post("http://localhost:5001/api/evaluate", {
-                answers: answers.map((answerIndex, questionIndex) => ({
-                    question: questions[questionIndex].question,
-                    answer: questions[questionIndex].choices[answerIndex]
-                }))
+            // Local evaluation
+            const evaluatedResults = answers.map((answerIndex, index) => {
+                const question = questions[index];
+                const isCorrect = question.choices[answerIndex] === question.correct_answer;
+                
+                return {
+                    question: question.question,
+                    status: isCorrect ? "Correct" : "Incorrect",
+                    explanation: question.explanation,
+                    correct_answer: question.correct_answer,
+                    topic: question.topic
+                };
             });
 
-            const score = answers.reduce((acc, answer, index) => {
-                return acc + (questions[index].choices[answer] === questions[index].correct_answer ? 1 : 0);
-            }, 0);
+            // Calculate weak topics
+            const topicErrors = evaluatedResults.reduce((acc, result) => {
+                if (result.status === "Incorrect") {
+                    acc[result.topic] = (acc[result.topic] || 0) + 1;
+                }
+                return acc;
+            }, {});
 
             setResults({
-                score,
+                score: evaluatedResults.filter(r => r.status === "Correct").length,
                 total: questions.length,
-                details: questions.map((q, i) => ({
-                    question: q.question,
-                    correct: q.choices[answers[i]] === q.correct_answer,
-                    topic: q.topic
-                }))
+                details: evaluatedResults
             });
 
+            setWeakTopics(topicErrors);
             setIsSubmitted(true);
+
+            // Only fetch videos if there are weak topics
+            if (Object.keys(topicErrors).length > 0) {
+                await fetchRecommendedVideos(Object.keys(topicErrors));
+            }
         } catch (error) {
-            console.error("Error submitting quiz:", error);
+            console.error("Error evaluating quiz:", error);
             setShowAlert(true);
         }
     };
@@ -257,22 +330,83 @@ const Quiz = () => {
                     <p className="text-lg mb-4">
                         Score: {results.score} / {results.total}
                     </p>
+                    
+                    {Object.entries(weakTopics).length > 0 && (
+                        <div className="mb-6">
+                            <h3 className="font-medium mb-2">Topics to Review:</h3>
+                            <ul className="list-disc list-inside">
+                                {Object.entries(weakTopics).map(([topic, count]) => (
+                                    <li key={topic} className="text-red-600">
+                                        {topic}: {count} incorrect
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    )}
+
                     <div className="mt-6">
                         <h3 className="font-medium mb-2">Question Summary:</h3>
                         {results.details.map((detail, index) => (
                             <div 
                                 key={index}
-                                className={`p-4 rounded-lg mb-2 ${
-                                    detail.correct ? 'bg-green-50' : 'bg-red-50'
+                                className={`p-4 rounded-lg mb-4 ${
+                                    detail.status === "Correct" ? 'bg-green-50' : 'bg-red-50'
                                 }`}
                             >
                                 <p className="font-medium">{detail.question}</p>
-                                <p className={detail.correct ? 'text-green-600' : 'text-red-600'}>
-                                    {detail.correct ? 'Correct' : 'Incorrect'}
+                                <p className={detail.status === "Correct" ? 'text-green-600' : 'text-red-600'}>
+                                    {detail.status}
                                 </p>
+                                {detail.status === "Incorrect" && (
+                                    <>
+                                        <p className="mt-2 text-gray-700">
+                                            Correct Answer: {detail.correct_answer}
+                                        </p>
+                                        <p className="mt-1 text-gray-600">
+                                            {detail.explanation}
+                                        </p>
+                                    </>
+                                )}
                             </div>
                         ))}
                     </div>
+                </div>
+            )}
+
+            {isSubmitted && videos.length > 0 && (
+                <div className="mt-8 bg-white rounded-lg shadow-md p-6">
+                    <h2 className="text-xl font-semibold mb-4">Recommended Videos</h2>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        {videos.map((video, index) => (
+                            <a
+                                key={index}
+                                href={video.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="block hover:transform hover:scale-105 transition-all duration-300"
+                            >
+                                <div className="bg-gray-50 rounded-lg overflow-hidden shadow-sm hover:shadow-md">
+                                    <img
+                                        src={video.thumbnail}
+                                        alt={video.title}
+                                        className="w-full h-48 object-cover"
+                                    />
+                                    <div className="p-4">
+                                        <h3 className="font-medium text-gray-900 line-clamp-2">
+                                            {video.title}
+                                        </h3>
+                                    </div>
+                                </div>
+                            </a>
+                        ))}
+                    </div>
+                </div>
+            )}
+
+            {isLoadingVideos && (
+                <div className="mt-4 text-center">
+                    <div className="inline-block animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-indigo-600"></div>
+                    <p className="mt-2 text-gray-600">Loading recommendations...</p>
                 </div>
             )}
 

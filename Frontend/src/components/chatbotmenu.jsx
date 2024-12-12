@@ -38,7 +38,7 @@ const ChatbotMenu = () => {
                 text: response.data.response,
                 sender: 'bot',
                 timestamp: new Date().toISOString(),
-                model: response.data.model_used
+               
             };
 
             setMessages(prev => [...prev, botMessage]);

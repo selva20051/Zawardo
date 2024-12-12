@@ -25,7 +25,7 @@ tokenizer = AutoTokenizer.from_pretrained('bert-base-uncased')
 model = AutoModel.from_pretrained('bert-base-uncased')
 
 # Initialize the chatbot model (T5 and Ollama)
-MODEL_DIR = r"C:\Users\SRIMANTA MAHARANA\Desktop\vinayak\Zawardo\checkpoint-12000"
+MODEL_DIR = r"C:\Users\ms979\OneDrive\Desktop\Zawardo\ModelB-0.1.0\checkpoint-12000"
 OLLAMA_API_URL = "http://localhost:11434/api/generate"
 
 # Model weights and patterns - Adjusted to favor Ollama
@@ -317,7 +317,7 @@ def generate_t5_response(input_text):
 
         return None
 
-def query_ollama(input_text, model_name="mistral"):
+def query_ollama(input_text, model_name="llama-3.2"):
     try:
         response = requests.post(
             OLLAMA_API_URL,

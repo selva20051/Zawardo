@@ -1,6 +1,7 @@
 // Navbar.jsx
 import { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const api = axios.create({
   baseURL: 'http://localhost:5000',
@@ -13,7 +14,11 @@ const api = axios.create({
   }
 });
 
+
+
 const Navbar = () => {
+
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [classroomId, setClassroomId] = useState('');
@@ -21,6 +26,10 @@ const Navbar = () => {
   const [action, setAction] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
+
+  const handleClick = () => {
+    navigate('/chatbot');
+  }
 
   const handleClassAction = async (e) => {
     e.preventDefault();
@@ -79,7 +88,7 @@ const Navbar = () => {
               className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white hover:opacity-90 hover:scale-105 hover:shadow-md px-4 py-2 rounded-lg font-medium transition-all duration-200">
               Classroom
             </button>
-            <button className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white hover:opacity-90 hover:scale-105 hover:shadow-md px-4 py-2 rounded-lg font-medium transition-all duration-200 flex items-center">
+            <button onClick={handleClick} className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white hover:opacity-90 hover:scale-105 hover:shadow-md px-4 py-2 rounded-lg font-medium transition-all duration-200 flex items-center">
               <svg 
                 className="w-5 h-5 mr-2 text-white" 
                 fill="none" 
