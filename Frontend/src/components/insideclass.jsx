@@ -12,6 +12,10 @@ const api = axios.create({
   }
 });
 
+const handleQuizClick = () => {
+    navigate(`/classroom/${id}/quiz`);
+  };
+
 const InsideClass = () => {
   const { id } = useParams();
   const [classroom, setClassroom] = useState(null);
@@ -49,10 +53,16 @@ const InsideClass = () => {
       <div className="border-b bg-white">
         <div className="max-w-7xl mx-auto">
           <nav className="flex space-x-8 px-6">
-            {['Stream', 'Assignments', 'People'].map((tab) => (
+            {['Stream', 'Assignments', 'Quiz', 'People'].map((tab) => (
               <button
                 key={tab}
-                onClick={() => setActiveTab(tab.toLowerCase())}
+                onClick={() => {
+                  if (tab === 'classroom/:id/quiz') {
+                    handleQuizClick();
+                  } else {
+                    setActiveTab(tab.toLowerCase());
+                  }
+                }}
                 className={`py-4 px-2 border-b-2 font-medium transition-colors duration-200 ${
                   activeTab === tab.toLowerCase()
                     ? 'border-indigo-600 text-indigo-600'
