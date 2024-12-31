@@ -1,46 +1,92 @@
-# Zawardo
+# StudyBuddy Learning Platform
 
+An intelligent educational platform that combines classroom management, interactive learning, and AI-powered assistance.
 
-Download this model and paste ModelB-0.1.0 folder
-https://drive.google.com/drive/folders/13fcNaZbPRmINb1D2p-nDHkK43sL16X8h?usp=sharing
+## Getting Started
 
-Based on the codebase, this appears to be a full-stack educational platform project with the following components:
+1. Download and extract the ML model:
+   - Download [ModelB-0.1.0](https://drive.google.com/drive/folders/13fcNaZbPRmINb1D2p-nDHkK43sL16X8h?usp=sharing)
+   - Place the ModelB-0.1.0 folder in the project root directory
 
-1. Backend (nodejs-microservices):
+## Project Architecture
+
+The platform follows a microservices architecture with three main components:
+
+### 1. Frontend (React + Vite)
+- Modern UI built with React 18 and Vite
+- Styling with Tailwind CSS
+- Features:
+  - Responsive and animated interface
+  - Classroom management dashboard
+  - Interactive quiz system
+  - Real-time chat with AI assistant
+  - Study group collaboration
+  - Course content viewer
+
+### 2. Backend (Node.js Microservices)
 - Built with Node.js, Express, and TypeScript
-- Uses Prisma ORM with PostgreSQL database
+- PostgreSQL database with Prisma ORM
 - Features:
-  - User authentication (local and Google OAuth)
-  - Classroom management
-  - Task/assignment system
-  - Todo list functionality
-  - File submission system
+  - User authentication (Local + Google OAuth)
+  - Classroom CRUD operations
+  - Assignment management
+  - Task tracking system
+  - File upload/download
+  - RESTful API endpoints
 
-2. Frontend (
-
-Frontend
-
-):
-- Built with React + Vite
-- Uses Tailwind CSS for styling
+### 3. ML Model Component (Python)
+- AI-powered learning assistant
 - Features:
-  - Responsive UI with animated components
-  - Class management interface
-  - Study group functionality
-  - Course overview system
-
-3. Model Component (ModelB-0.1.0/):
-- Python-based service
-- Features:
-  - Chat functionality
-  - API endpoints for evaluations
+  - Natural language processing
+  - Question-answering system
+  - Content recommendations
+  - Learning progress analysis
   - YouTube video integration
-  - Dataset handling for Q&A
+  - Dataset management for Q&A
 
-The project appears to be a learning management system called "StudyBuddy" that allows:
-- Teachers to create and manage classrooms
-- Students to join classes and submit assignments
-- Task management and tracking
-- Interactive learning features through AI chat and video content
+## Tech Stack
 
-The architecture follows a microservices pattern with separate frontend, backend, and ML model services communicating through APIs.
+### Frontend
+- React 18
+- Vite
+- Tailwind CSS
+- Framer Motion (animations)
+- Axios (HTTP client)
+- React Router DOM
+- React Icons
+
+### Backend
+- Node.js
+- Express
+- TypeScript
+- Prisma ORM
+- PostgreSQL
+- JWT Authentication
+- Passport.js
+- Express Session
+
+### ML Component
+- Python
+- Flask
+- TensorFlow
+- Transformers
+- BERT
+- YouTube API
+- Scikit-learn
+
+## Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/yourusername/Zawardo.git
+cd Zawardo
+```
+
+## Project Structure
+
+```markdown
+studybuddy/
+├── Frontend/               # React frontend
+├── nodejs-microservices/  # Node.js backend
+└── ModelB-0.1.0/         # Python ML service
+```
