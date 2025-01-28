@@ -1,6 +1,6 @@
 from googleapiclient.discovery import build
 
-API_KEY = 'AIzaSyBUifBNejneMKD3DlpqNl4E--HDITZUQRQ'
+API_KEY = 'API_KEY'
 
 def fetch_youtube_videos(query, max_results=5):
     youtube = build('youtube', 'v3', developerKey=API_KEY)
